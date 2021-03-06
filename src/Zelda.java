@@ -257,12 +257,12 @@ public class Zelda {
      */
     private static class SoundSystem implements Runnable {
         public void run() {
+            backgroundMusic();
             while (!endgame) {
-
                 //links sounds
                 runningSounds();
                 swordSounds();
-
+                shieldSounds();
                 try {
                     Thread.sleep(48);
                 } catch (InterruptedException ie) {
@@ -273,10 +273,13 @@ public class Zelda {
     }
 
     private static void backgroundMusic() {
-//        String song1 = "title-screen.mp3";
-//        Media hit = new Media(new File(song1).toURI().toString());
-//        MediaPlayer mediaPlayer = new MediaPlayer(song1);
-//        mediaPlayer.play();
+        String main = "Sounds/main.wav";
+        audioHelper(main);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ie) {
+            System.out.println("Interrupted exception in sound system!");
+        }
     }
 
     /**
@@ -459,13 +462,8 @@ public class Zelda {
 
                 //handles lines of movement for link, including strafing
                 if (upPressed || downPressed || leftPressed || rightPressed) {
-
-                    //for debugging if input is being received or not
-                    //System.out.println("Press detected!");
-
                     //set the velocity of the player equal to the constant movement velocity variable
                     p1velocity = velocityStep;
-                    //System.out.println("Velocity of the player: " + p1velocity);
 
                     if (upPressed) {
                         if (leftPressed) {
