@@ -5,10 +5,12 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.time.*;
 import java.io.*;
+import javax.sound.*;
 
 public class Zelda {
 
@@ -71,6 +73,10 @@ public class Zelda {
 
     //Map images
     private static BufferedImage tempBG;
+
+    //audio controllers
+    private static Clip clip;
+    private static Clip clip2;
 
     /**
      * Main method for calling setup, creating the app frame,
@@ -159,6 +165,8 @@ public class Zelda {
             System.out.println("Did not import an image correctly in the setup method");
         }
 
+        //linkSounds();
+
     }
 
     /**
@@ -211,10 +219,12 @@ public class Zelda {
             //threads for managing different game actions
             Thread t1 = new Thread(new Animate());
             Thread t2 = new Thread(new PlayerMover());
+            Thread t3 = new Thread(new SoundSystem());
 
             //start and manage the threads individually
             t1.start();
             t2.start();
+            t3.start();
         }
     }
 
@@ -233,6 +243,66 @@ public class Zelda {
                     System.out.println("Exception caught in Animate!");
                 }
             }
+        }
+    }
+
+    private static class SoundSystem implements Runnable {
+        public void run() {
+            while (!endgame) {
+                runningSounds();
+                swordSounds();
+
+                try {
+                    Thread.sleep(48);
+                } catch (InterruptedException ie) {
+                    System.out.println("Interrupted exception in sound system!");
+                }
+            }
+        }
+    }
+
+    private static void backgroundMusic() {
+//        String song1 = "title-screen.mp3";
+//        Media hit = new Media(new File(song1).toURI().toString());
+//        MediaPlayer mediaPlayer = new MediaPlayer(song1);
+//        mediaPlayer.play();
+    }
+
+    private static void swordSounds() {
+        if (xPressed) {
+            String linkSword = "Sounds/Sword2.wav";
+            audioHelper(linkSword);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ie) {
+                System.out.println("Interrupted exception in sound system!");
+            }
+        }
+    }
+
+    private static void runningSounds() {
+        if (downPressed || upPressed || leftPressed || rightPressed) {
+            String linkRunning = "Sounds/Link-Run.wav";
+            System.out.println("Is this working!");
+            audioHelper(linkRunning);
+        }
+    }
+
+    private static void audioHelper(String filename) {
+        try {
+            AudioInputStream audioFile = AudioSystem.getAudioInputStream(new File(filename));
+            clip = AudioSystem.getClip();
+            clip.open(audioFile);
+            clip.start();
+            Thread.sleep(120);
+        } catch (UnsupportedAudioFileException uafe) {
+            System.out.println("Unsupported audio file type!");
+        } catch (IOException ioe) {
+            System.out.println("IO exception for a sound!");
+        } catch (LineUnavailableException lue) {
+            System.out.println("Line unavailable exception for a sound!");
+        } catch (InterruptedException ie) {
+            System.out.println("Interrupted exception for one of the sounds!");
         }
     }
 
