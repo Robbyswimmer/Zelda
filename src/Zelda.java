@@ -38,6 +38,9 @@ public class Zelda {
     private static BufferedImage player2;
     private static BufferedImage currentPlayer;
 
+    //BufferedImage array to hold Links animations
+    private static BufferedImage[] link = new BufferedImage[12];
+
     //additional movement variables for link
     private static double lastPressed;
 
@@ -48,6 +51,9 @@ public class Zelda {
     private static Boolean rightPressed;
     private static Boolean aPressed;
     private static Boolean xPressed;
+
+    private static Boolean up = false;
+    private static Boolean down = false;
 
     //ImageObject for Link
     private static ImageObject p1;
@@ -112,8 +118,8 @@ public class Zelda {
 
         //initialize the frame for the game
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
-        WINWIDTH = 338;
-        WINHEIGHT = 271;
+        WINWIDTH = 500;
+        WINHEIGHT = 500;
 
         //setting endgame to false so game starts correctly
         endgame = false;
@@ -131,9 +137,23 @@ public class Zelda {
         //attempt to import castle images
         try {
             tempBG = ImageIO.read(new File("Images/castle/castle1.png"));
-            player = ImageIO.read(new File("Images/Link/walking-down-1.png"));
-            player2 = ImageIO.read(new File("Images/Link/walking-down-2.png"));
+            player = ImageIO.read(new File("Images/Link/walking0.png"));
+            player2 = ImageIO.read(new File("Images/Link/walking1.png"));
             currentPlayer = player;
+
+            for (int i = 0; i < 8; i++) {
+                BufferedImage tempImage = ImageIO.read(new File("Images/Link/walking" + i + ".png"));
+                link[i] = tempImage;
+                System.out.println("Initialized: Images/Link/walking" + i + ".png");
+            }
+
+            for (int i = 8; i < 12; i++) {
+                BufferedImage tempImage = ImageIO.read(new File("Images/Link/sword" + (i - 8) + ".png"));
+                link[i] = tempImage;
+                System.out.println("Initialized: Images/Link/Sword" + (i - 8) + ".png");
+            }
+
+
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
         }
@@ -203,39 +223,64 @@ public class Zelda {
      */
     private static class Animate implements Runnable {
         public void run() {
-            drawBackground();
-            drawPlayer();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ie) {
-                System.out.println("Exception caught in Animate!");
+            while (!endgame) {
+                drawBackground();
+                drawPlayer();
+                try {
+                    Thread.sleep(32);
+                } catch (InterruptedException ie) {
+                    System.out.println("Exception caught in Animate!");
+                }
             }
         }
     }
 
     /**
-     * Draws the player graphics
+     * Draws the player graphics and animations according to what buttons are being pressed
      */
     private static void drawPlayer() {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
 
-        int i = 0;
-
-        while (!endgame) {
-            g2d.drawImage(rotateImageObject(p1).filter(currentPlayer, null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ie) {
-                System.out.println("Exception caught in drawPlayer!");
-            }
-            if (i % 2 == 0)
-                currentPlayer = player;
-            else
-                currentPlayer = player2;
-
-            i++;
+        if (upPressed || downPressed || leftPressed || rightPressed) {
+            //animations: 2-3 = up, 0-1 = down, 3-4 = left, 5-6 = right
+            if (upPressed) drawPlayerHelper(2, g2d);
+            if (downPressed) drawPlayerHelper(0, g2d);
+            if (leftPressed) drawPlayerHelper(4, g2d);
+            if (rightPressed) drawPlayerHelper(6, g2d);
+        } else {
+            //down, right, left, up
+            if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(1, g2d);
+            if (Math.abs(lastPressed - 0.0) < 1.0) drawPlayerHelper2(7, g2d);
+            if (Math.abs(lastPressed - 180.0) < 1.0) drawPlayerHelper2(5, g2d);
+            if (Math.abs(lastPressed - 90.0) < 1.0) drawPlayerHelper2(3, g2d);
         }
+    }
+
+    /**
+     * This is just a helper method to reduce redundancy in the drawPlayer method
+     * @param animationNumber the index of the link animation being drawn
+     */
+    private static void drawPlayerHelper(int animationNumber, Graphics2D g2D) {
+
+        if (p1.getCurrentFrame() == 0) {
+            g2D.drawImage(rotateImageObject(p1).filter(link[animationNumber], null), (int) (p1.getX() + 0.5),
+                    (int) (p1.getY() + 0.5), null);
+        } else if (p1.getCurrentFrame() == 1) {
+            g2D.drawImage(rotateImageObject(p1).filter(link[animationNumber + 1], null), (int) (p1.getX() + 0.5),
+                    (int) (p1.getY() + 0.5), null);
+        }
+        p1.updateCurrentFrame();
+    }
+
+    /**
+     * Just to reduce code redundancy when links animations are being drawn
+     * @param animationNumber the index of the link animation being drawn
+     * @param g2D the graphics being imported
+     */
+    private static void drawPlayerHelper2(int animationNumber, Graphics2D g2D) {
+        g2D.drawImage(rotateImageObject(p1).filter(link[animationNumber], null), (int) (p1.getX() + 0.5),
+                (int) (p1.getY() + 0.5), null);
     }
 
     /**
@@ -255,9 +300,11 @@ public class Zelda {
     private static class PlayerMover implements Runnable {
 
         private double velocityStep;
+        Graphics G = appFrame.getGraphics();
+        Graphics2D g2d = (Graphics2D) G;
 
         public PlayerMover() {
-            velocityStep = 3;
+            velocityStep = 2;
         }
 
         public void run() {
@@ -268,73 +315,63 @@ public class Zelda {
                     System.out.println("Caught exception in PlayerMover!");
                 }
 
-                if (upPressed) {
-                    System.out.println("Moving");
-                    player = player2;
+                //handles lines of movement for link, including strafing
+                if (upPressed || downPressed || leftPressed || rightPressed) {
+
+                    //for debugging if input is being received or not
+                    //System.out.println("Press detected!");
+
+                    //set the velocity of the player equal to the constant movement velocity variable
                     p1velocity = velocityStep;
-                }  else {
+                    //System.out.println("Velocity of the player: " + p1velocity);
+
+                    if (upPressed) {
+                        if (leftPressed) {
+                            p1.setInternalAngle(fivequartersPi);
+                        } else if (rightPressed) {
+                            p1.setInternalAngle(5.49779);
+                        } else {
+                            p1.setInternalAngle(threehalvesPi);
+                        }
+                    }
+                    if (downPressed) {
+                        if (leftPressed) {
+                            p1.setInternalAngle(2.35619);
+                        } else if (rightPressed) {
+                            p1.setInternalAngle(quarterPi);
+                        } else {
+                            p1.setInternalAngle(halfPi);
+                        }
+                    }
+                    if (leftPressed) {
+                        if (upPressed) {
+                            p1.setInternalAngle(fivequartersPi);
+                        } else if (downPressed) {
+                            p1.setInternalAngle(threequartersPi);
+                        } else {
+                            p1.setInternalAngle(pi);
+                        }
+                    }
+                    if (rightPressed) {
+                        if (upPressed) {
+                            p1.setInternalAngle(5.49779);
+                        } else if (downPressed) {
+                            p1.setInternalAngle(quarterPi);
+                        } else {
+                            p1.setInternalAngle(0.0);
+                        }
+                    }
+
+                } else {
                     p1velocity = 0.0;
+                    p1.setInternalAngle(threehalvesPi);
                 }
 
-                //handles lines of movement for link, including strafing
-//                if (upPressed || downPressed || leftPressed || rightPressed) {
-//
-//                    //for debugging if input is being received or not
-//                    //System.out.println("Press detected!");
-//
-//                    //set the velocity of the player equal to the constant movement velocity variable
-//                    p1velocity = velocityStep;
-//                    //System.out.println("Velocity of the player: " + p1velocity);
-//
-//                    if (upPressed) {
-//                        if (leftPressed) {
-//                            p1.setInternalAngle(fivequartersPi);
-//                        } else if (rightPressed) {
-//                            p1.setInternalAngle(5.49779);
-//                        } else {
-//                            p1.setInternalAngle(threehalvesPi);
-//                        }
-//                    }
-//                    if (downPressed) {
-//                        if (leftPressed) {
-//                            p1.setInternalAngle(2.35619);
-//                        } else if (rightPressed) {
-//                            p1.setInternalAngle(quarterPi);
-//                        } else {
-//                            p1.setInternalAngle(halfPi);
-//                        }
-//                    }
-//                    if (leftPressed) {
-//                        if (upPressed) {
-//                            p1.setInternalAngle(fivequartersPi);
-//                        } else if (downPressed) {
-//                            p1.setInternalAngle(threequartersPi);
-//                        } else {
-//                            p1.setInternalAngle(pi);
-//                        }
-//                    }
-//                    if (rightPressed) {
-//                        if (upPressed) {
-//                            p1.setInternalAngle(5.49779);
-//                        } else if (downPressed) {
-//                            p1.setInternalAngle(quarterPi);
-//                        } else {
-//                            p1.setInternalAngle(0.0);
-//                        }
-//                    }
-//
-//                } else {
-//                    p1velocity = 0.0;
-//                    p1.setInternalAngle(threehalvesPi);
-//                }
-
                 //checks bounce condition for link
-//                p1.updateBounce();
+                p1.updateBounce();
 
                 //correct movement code for link
-//                p1.move(p1velocity * Math.cos(p1.getInternalAngle()), p1velocity * Math.sin(p1.getInternalAngle()));
-
-                p1.move(-p1velocity * Math.cos(p1.getAngle() - pi / 2.0), p1velocity * Math.sin(p1.getAngle() - pi / 2.0));
+                p1.move(p1velocity * Math.cos(p1.getInternalAngle()), p1velocity * Math.sin(p1.getInternalAngle()));
 
                 //does wrapping for links ImageObject
 //                int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
@@ -343,9 +380,7 @@ public class Zelda {
 
                 //FIXME maybe implement the clearEnemies and generateEnemies methods here depending on screenWrap
                 //CHECK source code for more info in playerMover
-
             }
-
         }
     }
 
