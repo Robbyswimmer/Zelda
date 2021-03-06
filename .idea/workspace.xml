@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/sword-attack-down-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/sword0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/sword-attack-left-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/sword2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/sword-attack-right-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/sword3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/sword-attack-up.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/sword1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-down-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-down-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-left-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-left.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-right-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-right-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-up-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Link/walking-up-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Link/walking3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,13 +16,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zelda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+            <state relative-caret-position="1978">
+              <caret line="225" column="27" selection-start-line="225" selection-start-column="27" selection-end-line="225" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3588#3589#0" expanded="true" />
                 <element signature="e#3626#3627#0" expanded="true" />
-                <element signature="e#10516#10517#0" expanded="true" />
+                <element signature="e#11413#11414#0" expanded="true" />
                 <element signature="e#5361#5362#0" expanded="true" />
                 <element signature="e#5396#5397#0" expanded="true" />
                 <element signature="e#5439#5440#0" expanded="true" />
@@ -188,8 +167,7 @@
             <path>
               <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
               <item name="Zelda" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="Link" type="462c0819:PsiDirectoryNode" />
+              <item name="Sounds" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -202,7 +180,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1615058489518" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1615060368466" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -261,23 +239,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614985286665</updated>
-      <workItem from="1614985290090" duration="14906000" />
+      <workItem from="1614985290090" duration="17202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14906000" />
+    <option name="totallyTimeSpent" value="17202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1915" y="27" width="1879" height="1032" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25258574" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25258574" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" weight="0.32762313" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
@@ -287,7 +264,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2901499" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.14668094" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -358,13 +335,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zelda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+        <state relative-caret-position="1978">
+          <caret line="225" column="27" selection-start-line="225" selection-start-column="27" selection-end-line="225" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3588#3589#0" expanded="true" />
             <element signature="e#3626#3627#0" expanded="true" />
-            <element signature="e#10516#10517#0" expanded="true" />
+            <element signature="e#11413#11414#0" expanded="true" />
             <element signature="e#5361#5362#0" expanded="true" />
             <element signature="e#5396#5397#0" expanded="true" />
             <element signature="e#5439#5440#0" expanded="true" />

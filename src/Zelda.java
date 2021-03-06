@@ -141,18 +141,19 @@ public class Zelda {
             player2 = ImageIO.read(new File("Images/Link/walking1.png"));
             currentPlayer = player;
 
+            //imports the images for links normal walking
             for (int i = 0; i < 8; i++) {
                 BufferedImage tempImage = ImageIO.read(new File("Images/Link/walking" + i + ".png"));
                 link[i] = tempImage;
                 System.out.println("Initialized: Images/Link/walking" + i + ".png");
             }
 
+            //imports the images for links sword attacks
             for (int i = 8; i < 12; i++) {
                 BufferedImage tempImage = ImageIO.read(new File("Images/Link/sword" + (i - 8) + ".png"));
                 link[i] = tempImage;
                 System.out.println("Initialized: Images/Link/Sword" + (i - 8) + ".png");
             }
-
 
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
@@ -227,7 +228,7 @@ public class Zelda {
                 drawBackground();
                 drawPlayer();
                 try {
-                    Thread.sleep(32);
+                    Thread.sleep(48);
                 } catch (InterruptedException ie) {
                     System.out.println("Exception caught in Animate!");
                 }
@@ -242,12 +243,13 @@ public class Zelda {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
 
-        if (upPressed || downPressed || leftPressed || rightPressed) {
+        if (upPressed || downPressed || leftPressed || rightPressed || xPressed) {
             //animations: 2-3 = up, 0-1 = down, 3-4 = left, 5-6 = right
             if (upPressed) drawPlayerHelper(2, g2d);
             if (downPressed) drawPlayerHelper(0, g2d);
             if (leftPressed) drawPlayerHelper(4, g2d);
             if (rightPressed) drawPlayerHelper(6, g2d);
+            if (xPressed) drawPlayerHelperFighting(g2d);
         } else {
             //down, right, left, up
             if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(1, g2d);
@@ -255,6 +257,18 @@ public class Zelda {
             if (Math.abs(lastPressed - 180.0) < 1.0) drawPlayerHelper2(5, g2d);
             if (Math.abs(lastPressed - 90.0) < 1.0) drawPlayerHelper2(3, g2d);
         }
+    }
+
+    /**
+     * Helper for determining the current direction Link is facing in so that
+     * the correct sword attack animation can be drawn
+     * @param g2d importing graphics for drawing the correct animation
+     */
+    private static void drawPlayerHelperFighting(Graphics2D g2d) {
+        if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(8, g2d);
+        if (Math.abs(lastPressed - 90.0) < 1.0) drawPlayerHelper2(9, g2d);
+        if (Math.abs(lastPressed - 180.0) < 1.0) drawPlayerHelper2(10, g2d);
+        if (Math.abs(lastPressed - 0.0) < 1.0) drawPlayerHelper2(11, g2d);
     }
 
     /**
@@ -289,7 +303,10 @@ public class Zelda {
     private static void drawBackground() {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
+//        g2d.setBackground(Color.white);
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, 500, 550);
+//        g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
     }
 
     /**
@@ -304,7 +321,7 @@ public class Zelda {
         Graphics2D g2d = (Graphics2D) G;
 
         public PlayerMover() {
-            velocityStep = 2;
+            velocityStep = 1;
         }
 
         public void run() {
