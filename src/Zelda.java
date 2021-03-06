@@ -8,9 +8,7 @@ import java.util.*;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.imageio.ImageIO;
-import java.time.*;
 import java.io.*;
-import javax.sound.*;
 
 public class Zelda {
 
@@ -41,7 +39,7 @@ public class Zelda {
     private static BufferedImage currentPlayer;
 
     //BufferedImage array to hold Links animations
-    private static BufferedImage[] link = new BufferedImage[12];
+    private static BufferedImage[] link = new BufferedImage[16];
 
     //additional movement variables for link
     private static double lastPressed;
@@ -161,6 +159,13 @@ public class Zelda {
                 System.out.println("Initialized: Images/Link/Sword" + (i - 8) + ".png");
             }
 
+            //imports the images for links shield blocks
+            for (int i = 12; i < 16; i++) {
+                BufferedImage tempImage = ImageIO.read(new File("Images/Link/shield" + (i - 12) + ".png"));
+                link[i] = tempImage;
+                System.out.println("Initialized: Images/Link/Shield" + (i - 12) + ".png");
+            }
+
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
         }
@@ -246,9 +251,15 @@ public class Zelda {
         }
     }
 
+    /**
+     * A Runnable sound system for handling all of the general
+     * sounds in the game
+     */
     private static class SoundSystem implements Runnable {
         public void run() {
             while (!endgame) {
+
+                //links sounds
                 runningSounds();
                 swordSounds();
 
@@ -268,6 +279,24 @@ public class Zelda {
 //        mediaPlayer.play();
     }
 
+    /**
+     * Retrieving the correct sounds for links shield
+     */
+    private static void shieldSounds() {
+        if (aPressed) {
+            String linkSword = "Sounds/Shield.wav";
+            audioHelper(linkSword);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ie) {
+                System.out.println("Interrupted exception in sound system!");
+            }
+        }
+    }
+
+    /**
+     * Retrieving the correct sounds for links sword attacks
+     */
     private static void swordSounds() {
         if (xPressed) {
             String linkSword = "Sounds/Sword2.wav";
@@ -280,14 +309,20 @@ public class Zelda {
         }
     }
 
+    /**
+     * Retrieving the correct sounds for links running
+     */
     private static void runningSounds() {
         if (downPressed || upPressed || leftPressed || rightPressed) {
             String linkRunning = "Sounds/Link-Run.wav";
-            System.out.println("Is this working!");
             audioHelper(linkRunning);
         }
     }
 
+    /**
+     * Helper method to reduce redundancy when retrieving game sounds
+     * @param filename the name of the sound file being retrieved
+     */
     private static void audioHelper(String filename) {
         try {
             AudioInputStream audioFile = AudioSystem.getAudioInputStream(new File(filename));
@@ -313,19 +348,17 @@ public class Zelda {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
 
-        if (upPressed || downPressed || leftPressed || rightPressed || xPressed) {
+        if (upPressed || downPressed || leftPressed || rightPressed || xPressed || aPressed) {
             //animations: 2-3 = up, 0-1 = down, 3-4 = left, 5-6 = right
             if (upPressed) drawPlayerHelper(2, g2d);
             if (downPressed) drawPlayerHelper(0, g2d);
             if (leftPressed) drawPlayerHelper(4, g2d);
             if (rightPressed) drawPlayerHelper(6, g2d);
             if (xPressed) drawPlayerHelperFighting(g2d);
+            if (aPressed) drawPlayerHelperShield(g2d);
         } else {
             //down, right, left, up
-            if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(1, g2d);
-            if (Math.abs(lastPressed - 0.0) < 1.0) drawPlayerHelper2(7, g2d);
-            if (Math.abs(lastPressed - 180.0) < 1.0) drawPlayerHelper2(5, g2d);
-            if (Math.abs(lastPressed - 90.0) < 1.0) drawPlayerHelper2(3, g2d);
+            lastPressedHelper(g2d, 1, 3, 5, 7);
         }
     }
 
@@ -335,10 +368,32 @@ public class Zelda {
      * @param g2d importing graphics for drawing the correct animation
      */
     private static void drawPlayerHelperFighting(Graphics2D g2d) {
-        if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(8, g2d);
-        if (Math.abs(lastPressed - 90.0) < 1.0) drawPlayerHelper2(9, g2d);
-        if (Math.abs(lastPressed - 180.0) < 1.0) drawPlayerHelper2(10, g2d);
-        if (Math.abs(lastPressed - 0.0) < 1.0) drawPlayerHelper2(11, g2d);
+       lastPressedHelper(g2d, 8, 9, 10, 11);
+    }
+
+    /**
+     * Helper for determining the current direction Link is facing in so that
+     * the correct shield animation can be drawn
+     * @param g2d importing graphics for drawing the correct animation
+     */
+    private static void drawPlayerHelperShield(Graphics2D g2d) {
+        lastPressedHelper(g2d, 12, 13, 14, 15);
+    }
+
+    /**
+     * Helper to reduce redundancy in the shield and sword animation methods
+     * since they utlize the same directional code for drawing animations
+     * @param g2d graphics for drawing animations
+     * @param n1 down animation
+     * @param n2 up animation
+     * @param n3 left animation
+     * @param n4 right animationn
+     */
+    private static void lastPressedHelper(Graphics2D g2d, int n1, int n2, int n3, int n4) {
+        if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(n1, g2d);
+        if (Math.abs(lastPressed - 90.0) < 1.0) drawPlayerHelper2(n2, g2d);
+        if (Math.abs(lastPressed - 180.0) < 1.0) drawPlayerHelper2(n3, g2d);
+        if (Math.abs(lastPressed - 0.0) < 1.0) drawPlayerHelper2(n4, g2d);
     }
 
     /**
@@ -368,7 +423,7 @@ public class Zelda {
     }
 
     /**
-     * draws the background graphics
+     * draws the map background graphics
      */
     private static void drawBackground() {
         Graphics g = appFrame.getGraphics();
