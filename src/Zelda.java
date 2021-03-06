@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.*;
 import javax.swing.*;
@@ -13,6 +15,12 @@ public class Zelda {
     //variables for pi
     private static double pi = Math.PI;
     private static double twoPi = 2 * pi;
+    private static double quarterPi = 0.25 * pi;
+    private static double halfPi = 0.5 * pi;
+    private static double threequartersPi = 0.75 * pi;
+    private static double fivequartersPi = 1.25 * pi;
+    private static double threehalvesPi = 1.5 * pi;
+    private static double sevenquartersPi = 1.75 * pi;
 
     //Determines if the game is over
     private static boolean endgame;
@@ -25,8 +33,10 @@ public class Zelda {
     private static int WINWIDTH;
     private static int WINHEIGHT;
 
-    //static image for the player
+    //temporary static images for the player for testing purposes
     private static BufferedImage player;
+    private static BufferedImage player2;
+    private static BufferedImage currentPlayer;
 
     //additional movement variables for link
     private static double lastPressed;
@@ -38,6 +48,9 @@ public class Zelda {
     private static Boolean rightPressed;
     private static Boolean aPressed;
     private static Boolean xPressed;
+
+    //ImageObject for Link
+    private static ImageObject p1;
 
     //ImageObject variables for controlling Link
     private static double p1width;
@@ -112,13 +125,15 @@ public class Zelda {
         //values for Link's character and the starting position of Link's ImageObject
         p1width = 20;
         p1height = 20;
-        p1originalX = (double) XOFFSET + ((double) WINWIDTH / 2.0) - (p1width / 2.0);
-        p1originalY = (double) YOFFSET + ((double) WINHEIGHT / 2.0) - (p1height / 2.0);
+        p1originalX = 150;
+        p1originalY = 150;
 
         //attempt to import castle images
         try {
             tempBG = ImageIO.read(new File("Images/castle/castle1.png"));
             player = ImageIO.read(new File("Images/Link/walking-down-1.png"));
+            player2 = ImageIO.read(new File("Images/Link/walking-down-2.png"));
+            currentPlayer = player;
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
         }
@@ -154,6 +169,16 @@ public class Zelda {
             xPressed = false;
             lastPressed = 90.0;
 
+            //p1 initial variables for Link's ImageObject
+            p1 = new ImageObject(p1originalX, p1originalY, p1width, p1height, 0.0);
+            p1velocity = 0.0;
+            p1.setInternalAngle(threehalvesPi);
+            p1.setMaxFrames(2);
+            p1.setlastposx(p1originalX);
+            p1.setlastposy(p1originalY);
+
+            //FIXME implement the set life variables for p1
+
             try {
                 Thread.sleep(50);
             } catch (InterruptedException ie) {
@@ -164,9 +189,11 @@ public class Zelda {
 
             //threads for managing different game actions
             Thread t1 = new Thread(new Animate());
+            Thread t2 = new Thread(new PlayerMover());
 
             //start and manage the threads individually
             t1.start();
+            t2.start();
         }
     }
 
@@ -179,7 +206,7 @@ public class Zelda {
             drawBackground();
             drawPlayer();
             try {
-                Thread.sleep(32);
+                Thread.sleep(100);
             } catch (InterruptedException ie) {
                 System.out.println("Exception caught in Animate!");
             }
@@ -192,7 +219,23 @@ public class Zelda {
     private static void drawPlayer() {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(player, XOFFSET, YOFFSET, null);
+
+        int i = 0;
+
+        while (!endgame) {
+            g2d.drawImage(rotateImageObject(p1).filter(currentPlayer, null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ie) {
+                System.out.println("Exception caught in drawPlayer!");
+            }
+            if (i % 2 == 0)
+                currentPlayer = player;
+            else
+                currentPlayer = player2;
+
+            i++;
+        }
     }
 
     /**
@@ -202,6 +245,108 @@ public class Zelda {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
+    }
+
+    /**
+     * The class responsible for handling player movement,
+     * storing the velocity constant, determining strafing angle
+     * and bouncing on certain collisions
+     */
+    private static class PlayerMover implements Runnable {
+
+        private double velocityStep;
+
+        public PlayerMover() {
+            velocityStep = 3;
+        }
+
+        public void run() {
+            while(!endgame) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ie) {
+                    System.out.println("Caught exception in PlayerMover!");
+                }
+
+                if (upPressed) {
+                    System.out.println("Moving");
+                    player = player2;
+                    p1velocity = velocityStep;
+                }  else {
+                    p1velocity = 0.0;
+                }
+
+                //handles lines of movement for link, including strafing
+//                if (upPressed || downPressed || leftPressed || rightPressed) {
+//
+//                    //for debugging if input is being received or not
+//                    //System.out.println("Press detected!");
+//
+//                    //set the velocity of the player equal to the constant movement velocity variable
+//                    p1velocity = velocityStep;
+//                    //System.out.println("Velocity of the player: " + p1velocity);
+//
+//                    if (upPressed) {
+//                        if (leftPressed) {
+//                            p1.setInternalAngle(fivequartersPi);
+//                        } else if (rightPressed) {
+//                            p1.setInternalAngle(5.49779);
+//                        } else {
+//                            p1.setInternalAngle(threehalvesPi);
+//                        }
+//                    }
+//                    if (downPressed) {
+//                        if (leftPressed) {
+//                            p1.setInternalAngle(2.35619);
+//                        } else if (rightPressed) {
+//                            p1.setInternalAngle(quarterPi);
+//                        } else {
+//                            p1.setInternalAngle(halfPi);
+//                        }
+//                    }
+//                    if (leftPressed) {
+//                        if (upPressed) {
+//                            p1.setInternalAngle(fivequartersPi);
+//                        } else if (downPressed) {
+//                            p1.setInternalAngle(threequartersPi);
+//                        } else {
+//                            p1.setInternalAngle(pi);
+//                        }
+//                    }
+//                    if (rightPressed) {
+//                        if (upPressed) {
+//                            p1.setInternalAngle(5.49779);
+//                        } else if (downPressed) {
+//                            p1.setInternalAngle(quarterPi);
+//                        } else {
+//                            p1.setInternalAngle(0.0);
+//                        }
+//                    }
+//
+//                } else {
+//                    p1velocity = 0.0;
+//                    p1.setInternalAngle(threehalvesPi);
+//                }
+
+                //checks bounce condition for link
+//                p1.updateBounce();
+
+                //correct movement code for link
+//                p1.move(p1velocity * Math.cos(p1.getInternalAngle()), p1velocity * Math.sin(p1.getInternalAngle()));
+
+                p1.move(-p1velocity * Math.cos(p1.getAngle() - pi / 2.0), p1velocity * Math.sin(p1.getAngle() - pi / 2.0));
+
+                //does wrapping for links ImageObject
+//                int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
+
+                //FIXME maybe implement 'backgroundState' array with screenwrap functionality
+
+                //FIXME maybe implement the clearEnemies and generateEnemies methods here depending on screenWrap
+                //CHECK source code for more info in playerMover
+
+            }
+
+        }
     }
 
     /**
@@ -240,7 +385,6 @@ public class Zelda {
                 xPressed = true;
             }
         }
-
         private String action;
     }
 
@@ -286,10 +430,20 @@ public class Zelda {
      * @param input the key that is being bound
      */
     private static void bindKey(JPanel myPanel, String input) {
+        System.out.println("Bound " + input + " key.");
         myPanel.getInputMap(IFW).put(KeyStroke.getKeyStroke("pressed " + input), input + " pressed");
         myPanel.getActionMap().put(input + " pressed", new KeyPressed(input));
         myPanel.getInputMap(IFW).put(KeyStroke.getKeyStroke("released " + input), input + " released");
         myPanel.getActionMap().put(input + " released", new KeyReleased(input));
+    }
+
+    /**
+     * Helper method for rotating the imageobject according to current orientation
+     */
+    private static AffineTransformOp rotateImageObject(ImageObject obj) {
+        AffineTransform at = AffineTransform.getRotateInstance(-obj.getAngle(), obj.getWidth() / 2.0, obj.getHeight() / 2.0);
+        AffineTransformOp atop = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+        return atop;
     }
 
     /**
@@ -556,6 +710,5 @@ public class Zelda {
             }
         }
     }
-
 
 }
