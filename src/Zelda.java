@@ -492,17 +492,10 @@ public class Zelda {
 //                purpleArmosList.get(0).move(velocityStep * Math.cos(purpleArmosList.get(0).getInternalAngle()),
 //                        velocityStep * Math.sin(purpleArmosList.get(0).getInternalAngle()));
 
+                //angle = 0.0 moves to the right, anlge = 90.0 moves to the left
+                //FIXME make it so that it moves right for a period of time, then left for the same period and have it repeat
                 armos.setInternalAngle(0.0);
                 armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
-
-//                if (armos.getX() < 180) {
-//                    armos.setInternalAngle(0.0);
-//                    armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
-//                } else if (armos.getX() < 20){
-//                    armos.setInternalAngle(90);
-//                    armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
-//                }
-
             }
         }
     }
