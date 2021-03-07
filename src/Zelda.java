@@ -41,6 +41,9 @@ public class Zelda {
     //BufferedImage array to hold Links animations
     private static BufferedImage[] link = new BufferedImage[16];
 
+    //BufferedImage arrays for holding enemy animations
+    private static BufferedImage[] purpleArmos = new BufferedImage[2];
+
     //additional movement variables for link
     private static double lastPressed;
 
@@ -57,6 +60,10 @@ public class Zelda {
 
     //ImageObject for Link
     private static ImageObject p1;
+
+    //ImageObjects lists for enemies
+    private static ImageObject armos;
+    private static ArrayList<ImageObject> purpleArmosList;
 
     //ImageObject variables for controlling Link
     private static double p1width;
@@ -138,7 +145,9 @@ public class Zelda {
         p1originalX = 150;
         p1originalY = 150;
 
-        //attempt to import castle images
+//        purpleArmosList.add(new ImageObject(100, 200, 20, 20, 0.0));
+
+        //attempt to import all images for maps, player, and enemies
         try {
             tempBG = ImageIO.read(new File("Images/castle/castle1.png"));
             player = ImageIO.read(new File("Images/Link/walking0.png"));
@@ -166,12 +175,13 @@ public class Zelda {
                 System.out.println("Initialized: Images/Link/Shield" + (i - 12) + ".png");
             }
 
+            //imports the images for the purple Armos
+            purpleArmos[0] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
+            purpleArmos[1] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
+
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
         }
-
-        //linkSounds();
-
     }
 
     /**
@@ -211,6 +221,13 @@ public class Zelda {
             p1.setlastposx(p1originalX);
             p1.setlastposy(p1originalY);
 
+            armos = new ImageObject(100, 200, 20, 20, 0.0);
+            armos.setInternalAngle(threehalvesPi);
+            armos.setMaxFrames(2);
+            armos.setlastposx(100);
+            armos.setlastposy(200);
+            //purpleArmosList.add(armos);
+
             //FIXME implement the set life variables for p1
 
             try {
@@ -225,11 +242,13 @@ public class Zelda {
             Thread t1 = new Thread(new Animate());
             Thread t2 = new Thread(new PlayerMover());
             Thread t3 = new Thread(new SoundSystem());
+            Thread t4 = new Thread(new EnemyMover());
 
             //start and manage the threads individually
             t1.start();
             t2.start();
             t3.start();
+            t4.start();
         }
     }
 
@@ -242,6 +261,7 @@ public class Zelda {
             while (!endgame) {
                 drawBackground();
                 drawPlayer();
+                drawEnemies();
                 try {
                     Thread.sleep(48);
                 } catch (InterruptedException ie) {
@@ -272,6 +292,9 @@ public class Zelda {
         }
     }
 
+    /**
+     * The main background music for the whole game
+     */
     private static void backgroundMusic() {
         String main = "Sounds/main.wav";
         audioHelper(main);
@@ -353,16 +376,27 @@ public class Zelda {
 
         if (upPressed || downPressed || leftPressed || rightPressed || xPressed || aPressed) {
             //animations: 2-3 = up, 0-1 = down, 3-4 = left, 5-6 = right
-            if (upPressed) drawPlayerHelper(2, g2d);
-            if (downPressed) drawPlayerHelper(0, g2d);
-            if (leftPressed) drawPlayerHelper(4, g2d);
-            if (rightPressed) drawPlayerHelper(6, g2d);
+            if (upPressed) drawCharacterHelper(p1, 2, g2d, link);
+            if (downPressed) drawCharacterHelper(p1, 0, g2d, link);
+            if (leftPressed) drawCharacterHelper(p1, 4, g2d, link);
+            if (rightPressed) drawCharacterHelper(p1, 6, g2d, link);
             if (xPressed) drawPlayerHelperFighting(g2d);
             if (aPressed) drawPlayerHelperShield(g2d);
         } else {
             //down, right, left, up
             lastPressedHelper(g2d, 1, 3, 5, 7);
         }
+    }
+
+    /**
+     * Test method for drawing enemies
+     */
+    private static void drawEnemies() {
+        Graphics g = appFrame.getGraphics();
+        Graphics2D g2d = (Graphics2D) g;
+
+        //create a test enemy
+        drawCharacterHelper(armos, 0, g2d, purpleArmos);
     }
 
     /**
@@ -400,19 +434,18 @@ public class Zelda {
     }
 
     /**
-     * This is just a helper method to reduce redundancy in the drawPlayer method
+     * This is just a helper method to reduce redundancy when drawing Link and enemies
      * @param animationNumber the index of the link animation being drawn
      */
-    private static void drawPlayerHelper(int animationNumber, Graphics2D g2D) {
-
-        if (p1.getCurrentFrame() == 0) {
-            g2D.drawImage(rotateImageObject(p1).filter(link[animationNumber], null), (int) (p1.getX() + 0.5),
-                    (int) (p1.getY() + 0.5), null);
-        } else if (p1.getCurrentFrame() == 1) {
-            g2D.drawImage(rotateImageObject(p1).filter(link[animationNumber + 1], null), (int) (p1.getX() + 0.5),
-                    (int) (p1.getY() + 0.5), null);
+    private static void drawCharacterHelper(ImageObject character, int animationNumber, Graphics2D g2d, BufferedImage[] animationSet) {
+        if (character.getCurrentFrame() == 0) {
+            g2d.drawImage(rotateImageObject(character).filter(animationSet[animationNumber], null), (int) (character.getX() + 0.5),
+                    (int) (character.getY() + 0.5), null);
+        } else if (character.getCurrentFrame() == 1) {
+            g2d.drawImage(rotateImageObject(character).filter(animationSet[animationNumber + 1], null), (int) (character.getX() + 0.5),
+                    (int) (character.getY() + 0.5), null);
         }
-        p1.updateCurrentFrame();
+        character.updateCurrentFrame();
     }
 
     /**
@@ -435,6 +468,43 @@ public class Zelda {
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, 500, 550);
 //        g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
+    }
+
+    /**
+     * The class responsible for handling enemy movement
+     */
+    private static class EnemyMover implements Runnable {
+        private double velocityStep;
+        Graphics G = appFrame.getGraphics();
+        Graphics2D g2d = (Graphics2D) G;
+
+        public EnemyMover() {
+            velocityStep = 0.5;
+        }
+
+        public void run() {
+            while (!endgame) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ie) {
+                    System.out.println("Caught exception in EnemyMover!");
+                }
+//                purpleArmosList.get(0).move(velocityStep * Math.cos(purpleArmosList.get(0).getInternalAngle()),
+//                        velocityStep * Math.sin(purpleArmosList.get(0).getInternalAngle()));
+
+                armos.setInternalAngle(0.0);
+                armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
+
+//                if (armos.getX() < 180) {
+//                    armos.setInternalAngle(0.0);
+//                    armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
+//                } else if (armos.getX() < 20){
+//                    armos.setInternalAngle(90);
+//                    armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
+//                }
+
+            }
+        }
     }
 
     /**
@@ -619,6 +689,35 @@ public class Zelda {
         AffineTransform at = AffineTransform.getRotateInstance(-obj.getAngle(), obj.getWidth() / 2.0, obj.getHeight() / 2.0);
         AffineTransformOp atop = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         return atop;
+    }
+
+    /**
+     * This is the main class that is responsible for setting up every enemy object that is in the game
+     * It controls the location of the enemies, their health, speed, and the damage they do to link.
+     */
+    private static class enemyObject {
+
+        public BufferedImage[] animations;
+        private int xCoord;
+        private int yCoord;
+        private int speed;
+        private int damage;
+        private int health;
+
+        public enemyObject(BufferedImage[] enemyAnimations, int x, int y, int movementSpeed, int damageToLink, int enemyHealth) {
+            this.animations = enemyAnimations;
+            this.xCoord = x;
+            this.yCoord = y;
+            this.speed = movementSpeed;
+            this.damage = damageToLink;
+            this.health = enemyHealth;
+        }
+
+        public void doDamage(int damage) { health -= damage; }
+        public void setX(int x) { xCoord = x; }
+        public void setY(int y) { yCoord = y; }
+        public int getX() { return xCoord; }
+        public int getY() { return yCoord; }
     }
 
     /**
