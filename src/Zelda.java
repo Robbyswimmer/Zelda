@@ -41,6 +41,12 @@ public class Zelda {
     //BufferedImage array to hold Links animations
     private static BufferedImage[] link = new BufferedImage[16];
 
+    //BufferedImage array to hold castle scenese
+    private static BufferedImage[] castleScenes = new BufferedImage[5];
+
+    //BufferedImage array to hold dungeon scenes
+    private static BufferedImage[] dungeonScenes = new BufferedImage[5];
+
     //BufferedImage arrays for holding enemy animations
     private static BufferedImage[] purpleArmos = new BufferedImage[2];
 
@@ -95,7 +101,7 @@ public class Zelda {
 
         //setting up the game frame
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        appFrame.setSize(WINWIDTH + 1, WINHEIGHT + 85);
+        appFrame.setSize(WINWIDTH + 1, WINHEIGHT + 1);
         JPanel myPanel = new JPanel();
 
         //start button
@@ -129,8 +135,8 @@ public class Zelda {
 
         //initialize the frame for the game
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
-        WINWIDTH = 500;
-        WINHEIGHT = 500;
+        WINWIDTH = 338;
+        WINHEIGHT = 271;
 
         //setting endgame to false so game starts correctly
         endgame = false;
@@ -149,7 +155,7 @@ public class Zelda {
 
         //attempt to import all images for maps, player, and enemies
         try {
-            tempBG = ImageIO.read(new File("Images/castle/castle1.png"));
+            tempBG = ImageIO.read(new File("Images/castle/castle0.png"));
             player = ImageIO.read(new File("Images/Link/walking0.png"));
             player2 = ImageIO.read(new File("Images/Link/walking1.png"));
             currentPlayer = player;
@@ -175,6 +181,20 @@ public class Zelda {
                 System.out.println("Initialized: Images/Link/Shield" + (i - 12) + ".png");
             }
 
+            //imports the images for castleScenes
+            for (int i = 0; i < 5; i++){
+                BufferedImage tempBGImages = ImageIO.read(new File("Images/castle/castle" + (i) + ".png"));
+                castleScenes[i] = tempBGImages;
+                System.out.println("Initialized: Images/castle/castle" + (i) + ".png");
+            }
+
+            //imports the images for dungeonScenes
+            for (int i = 0; i < 5; i++){
+                BufferedImage tempBGImages = ImageIO.read(new File("Images/dungeon/angler" + (i) + ".png"));
+                castleScenes[i] = tempBGImages;
+                System.out.println("Initialized: Images/dungeon/angler" + (i) + ".png");
+            }
+
             //imports the images for the purple Armos
             purpleArmos[0] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
             purpleArmos[1] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
@@ -190,6 +210,7 @@ public class Zelda {
     private static class QuitGame implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             endgame = true;
+            clip.stop();
         }
     }
 
@@ -262,6 +283,7 @@ public class Zelda {
                 drawBackground();
                 drawPlayer();
                 drawEnemies();
+                System.out.println("Player x pos: " + p1.getX() + ", Player y pos: " + p1.getY());
                 try {
                     Thread.sleep(48);
                 } catch (InterruptedException ie) {
@@ -465,9 +487,9 @@ public class Zelda {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
 //        g2d.setBackground(Color.white);
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, 500, 550);
-//        g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
+//        g2d.setColor(Color.WHITE);
+//        g2d.fillRect(0, 0, 500, 550);
+        g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
     }
 
     /**
@@ -514,6 +536,10 @@ public class Zelda {
         public PlayerMover() {
             velocityStep = 1;
         }
+
+        // need to check which scene is active, then sent the collisions based
+        // off of that scene.
+
 
         public void run() {
             while(!endgame) {
@@ -976,6 +1002,11 @@ public class Zelda {
                 internalangle = internalangle + twoPi;
             }
         }
+    }
+
+    private static void changeSceneBackground(){
+        // perhaps create a collision for each background
+        // image so that it triggers a new scene...
     }
 
 }
