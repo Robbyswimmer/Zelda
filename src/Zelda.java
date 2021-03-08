@@ -182,14 +182,14 @@ public class Zelda {
             }
 
             //imports the images for castleScenes
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < 5; i++) {
                 BufferedImage tempBGImages = ImageIO.read(new File("Images/castle/castle" + (i) + ".png"));
                 castleScenes[i] = tempBGImages;
                 System.out.println("Initialized: Images/castle/castle" + (i) + ".png");
             }
 
             //imports the images for dungeonScenes
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < 5; i++) {
                 BufferedImage tempBGImages = ImageIO.read(new File("Images/dungeon/angler" + (i) + ".png"));
                 castleScenes[i] = tempBGImages;
                 System.out.println("Initialized: Images/dungeon/angler" + (i) + ".png");
@@ -369,6 +369,7 @@ public class Zelda {
 
     /**
      * Helper method to reduce redundancy when retrieving game sounds
+     *
      * @param filename the name of the sound file being retrieved
      */
     private static void audioHelper(String filename) {
@@ -424,15 +425,17 @@ public class Zelda {
     /**
      * Helper for determining the current direction Link is facing in so that
      * the correct sword attack animation can be drawn
+     *
      * @param g2d importing graphics for drawing the correct animation
      */
     private static void drawPlayerHelperFighting(Graphics2D g2d) {
-       lastPressedHelper(g2d, 8, 9, 10, 11);
+        lastPressedHelper(g2d, 8, 9, 10, 11);
     }
 
     /**
      * Helper for determining the current direction Link is facing in so that
      * the correct shield animation can be drawn
+     *
      * @param g2d importing graphics for drawing the correct animation
      */
     private static void drawPlayerHelperShield(Graphics2D g2d) {
@@ -442,11 +445,12 @@ public class Zelda {
     /**
      * Helper to reduce redundancy in the shield and sword animation methods
      * since they utlize the same directional code for drawing animations
+     *
      * @param g2d graphics for drawing animations
-     * @param n1 down animation
-     * @param n2 up animation
-     * @param n3 left animation
-     * @param n4 right animationn
+     * @param n1  down animation
+     * @param n2  up animation
+     * @param n3  left animation
+     * @param n4  right animationn
      */
     private static void lastPressedHelper(Graphics2D g2d, int n1, int n2, int n3, int n4) {
         if (Math.abs(lastPressed - 270.0) < 1.0) drawPlayerHelper2(n1, g2d);
@@ -457,6 +461,7 @@ public class Zelda {
 
     /**
      * This is just a helper method to reduce redundancy when drawing Link and enemies
+     *
      * @param animationNumber the index of the link animation being drawn
      */
     private static void drawCharacterHelper(ImageObject character, int animationNumber, Graphics2D g2d, BufferedImage[] animationSet) {
@@ -472,8 +477,9 @@ public class Zelda {
 
     /**
      * Just to reduce code redundancy when links animations are being drawn
+     *
      * @param animationNumber the index of the link animation being drawn
-     * @param g2D the graphics being imported
+     * @param g2D             the graphics being imported
      */
     private static void drawPlayerHelper2(int animationNumber, Graphics2D g2D) {
         g2D.drawImage(rotateImageObject(p1).filter(link[animationNumber], null), (int) (p1.getX() + 0.5),
@@ -542,11 +548,15 @@ public class Zelda {
 
 
         public void run() {
-            while(!endgame) {
+            while (!endgame) {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException ie) {
                     System.out.println("Caught exception in PlayerMover!");
+                }
+
+                if (!inBounds(p1.getX(), p1.getY())) {
+                    changeSceneBackground();
                 }
 
                 //handles lines of movement for link, including strafing
@@ -611,6 +621,32 @@ public class Zelda {
                 //CHECK source code for more info in playerMover
             }
         }
+
+        private static void changeSceneBackground() {
+            // perhaps create a collision for each background
+            // image so that it triggers a new scene...
+
+            //left bound
+            if (p1.getX() <= -2.0) {
+                p1.moveto(p1.getX() + 328, p1.getY());
+            }
+            //right bound
+            if (p1.getX() >= 328.0) {
+                p1.moveto(p1.getX() - 328, p1.getY());
+            }
+            //top bound
+            if(p1.getY() <= 33){
+                p1.moveto(p1.getX(), p1.getY() + 245);
+            }
+            //bottom bound
+            if(p1.getY() >= 264){
+                p1.moveto(p1.getX(), p1.getY() - 245);
+            }
+        }
+
+        private static boolean inBounds(double playerX, double playerY) {
+            return playerX < -2.0 && playerX > 328.0 && playerY < 25 && playerY > 300;
+        }
     }
 
     /**
@@ -649,6 +685,7 @@ public class Zelda {
                 xPressed = true;
             }
         }
+
         private String action;
     }
 
@@ -684,14 +721,16 @@ public class Zelda {
                 xPressed = false;
             }
         }
+
         private String action;
     }
 
     /**
      * Takes the codes for the keyboard keys and binds them to strings so that
      * key presses can be detected within the app panel and used for movement
+     *
      * @param myPanel the main app panel
-     * @param input the key that is being bound
+     * @param input   the key that is being bound
      */
     private static void bindKey(JPanel myPanel, String input) {
         System.out.println("Bound " + input + " key.");
@@ -732,11 +771,25 @@ public class Zelda {
             this.health = enemyHealth;
         }
 
-        public void doDamage(int damage) { health -= damage; }
-        public void setX(int x) { xCoord = x; }
-        public void setY(int y) { yCoord = y; }
-        public int getX() { return xCoord; }
-        public int getY() { return yCoord; }
+        public void doDamage(int damage) {
+            health -= damage;
+        }
+
+        public void setX(int x) {
+            xCoord = x;
+        }
+
+        public void setY(int y) {
+            yCoord = y;
+        }
+
+        public int getX() {
+            return xCoord;
+        }
+
+        public int getY() {
+            return yCoord;
+        }
     }
 
     /**
@@ -1003,10 +1056,4 @@ public class Zelda {
             }
         }
     }
-
-    private static void changeSceneBackground(){
-        // perhaps create a collision for each background
-        // image so that it triggers a new scene...
-    }
-
 }
