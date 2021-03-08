@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/images/castle/castle0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/castle/castle1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/castle/castle2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/castle/castle3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/castle/castle4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/dungeon/angler0.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/castle/castle1.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/castle/castle2.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/castle/castle3.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/castle/castle4.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/castle/castle5.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/dungeon/angler1.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler1.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/dungeon/angler2.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler2.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/dungeon/angler3.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler3.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/dungeon/angler4.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler4.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/dungeon/angler5.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/META-INF/Zelda.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Zelda.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#16454#16455#0" expanded="true" />
-                <element signature="e#16493#16494#0" expanded="true" />
-                <element signature="e#15847#15848#0" expanded="true" />
-                <element signature="e#15887#15888#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,6 +55,11 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -61,7 +75,10 @@
     <option name="width" value="1879" />
     <option name="height" value="1032" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1pRloqc9IBhKfc7zhZ6bTqbBIEf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -92,7 +109,12 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1615092310851" />
@@ -106,18 +128,9 @@
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tomas\IdeaProjects\Zelda_Background_Imaging\images\castle" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Zelda">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -148,6 +161,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -201,6 +215,35 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Zelda.java</url>
+          <line>485</line>
+          <properties class="Zelda" method="drawBackground">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
