@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/castle/castle0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/castle/castle1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/castle/castle2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/castle/castle3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/castle/castle4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/dungeon/angler0.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/castle/castle1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/castle/castle2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/castle/castle3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/castle/castle4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/castle/castle5.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/dungeon/angler1.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler1.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/dungeon/angler2.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler2.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/dungeon/angler3.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler3.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/dungeon/angler4.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/dungeon/angler4.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/dungeon/angler5.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/META-INF/Zelda.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/castle/castle4.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/castle/castle4.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,52 +34,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/Zelda.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-1915" />
-    <option name="y" value="27" />
-    <option name="width" value="1879" />
-    <option name="height" value="1032" />
-  </component>
   <component name="ProjectId" id="1pRloqc9IBhKfc7zhZ6bTqbBIEf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -124,12 +53,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/castle" />
+      <recent name="C:\Users\tomas\IdeaProjects\Zelda_Background_Imaging\images\castle" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tomas\IdeaProjects\Zelda_Background_Imaging\images\castle" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Zelda">
@@ -161,7 +91,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -173,48 +103,12 @@
       <option name="presentableId" value="Default" />
       <updated>1614985286665</updated>
       <workItem from="1614985290090" duration="30133000" />
+      <workItem from="1615260002579" duration="1219000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30133000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-1915" y="27" width="1879" height="1032" extended-state="0" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25258574" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.32762313" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.08137045" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -244,116 +138,6 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/castle/castle4.PNG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/castle/castle5.PNG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/castle/castle3.PNG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/castle/castle2.PNG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/castle/castle1.PNG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/walking1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/walking5.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/shield0.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/shield-neutral-left.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/walking-down-hands-up-2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/sword0.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/sword-attack-left-2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/sword2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/walking0.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/shield-neutral-down-2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Link/shield-neutral-down-1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Boulder1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Boulder2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Boulder3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Boulder4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/PurpleArmos1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/PurpleArmos2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Ziiro1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Ziiro2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Ziiro3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/ZiiroTinyBlue.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/ZiiroTinyRed.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Armos2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Enemies/Armos1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zelda.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#16454#16455#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#15847#15848#0" expanded="true" />
-            <element signature="e#15887#15888#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
