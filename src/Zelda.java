@@ -46,6 +46,9 @@ public class Zelda {
     private static int col = 1;
     private static int row = 2;
 
+    //determines whether or not link is in the overworld or dungeon
+    private static boolean isOverworld;
+
     //BufferedImage array to hold castle scenese
     private static BufferedImage[] castleScenes = new BufferedImage[5];
 
@@ -157,6 +160,8 @@ public class Zelda {
         //initialize the frame for the game
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
         WINWIDTH = 338;
+
+        //original height 271
         WINHEIGHT = 271;
 
         //setting endgame to false so game starts correctly
@@ -174,6 +179,9 @@ public class Zelda {
 
         //initialize links health
         linksHealth = 5;
+
+        //make sure link starts in the overworld
+        isOverworld = true;
 
 //        purpleArmosList.add(new ImageObject(100, 200, 20, 20, 0.0));
 
@@ -230,7 +238,7 @@ public class Zelda {
             }
 
             loadOverworldImages();
-            //loadDungeonImages();
+            loadDungeonImages();
 
             //imports the images for the purple Armos
             purpleArmos[0] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
@@ -254,6 +262,21 @@ public class Zelda {
         }
 
     }
+
+    private static void loadDungeonImages() {
+
+        try {
+            dungeonTiles[1][0] = ImageIO.read(new File("Images/dungeon/angler0.png"));
+            dungeonTiles[2][0] = ImageIO.read(new File("Images/dungeon/angler2.png"));
+            dungeonTiles[2][1] = ImageIO.read(new File("Images/dungeon/angler3.png"));
+            dungeonTiles[1][1] = ImageIO.read(new File("Images/dungeon/angler1.png"));
+            dungeonTiles[0][1] = ImageIO.read(new File("Images/dungeon/angler4.png"));
+        } catch (IOException ioe) {
+            System.out.println("Exception in loadOverworld method!");
+        }
+
+    }
+
 
     /**
      * Class responsible for quitting the game when the quit game button is pressed
@@ -300,7 +323,6 @@ public class Zelda {
             armos.setlastposy(200);
             //purpleArmosList.add(armos);
 
-            //FIXME implement the set life variables for p1
 
             try {
                 Thread.sleep(50);
@@ -370,6 +392,7 @@ public class Zelda {
      */
     private static void backgroundMusic() {
         String main = "Sounds/main.wav";
+        String dungeon = "Sounds/dungeon-music.wav";
         audioHelper(main);
         try {
             Thread.sleep(500);
@@ -624,6 +647,8 @@ public class Zelda {
                     changeSceneBackground();
                 }
 
+//                System.out.println("X coordinates: " + p1.getX() + ", Y coordinates: " + p1.getY());
+
                 //handles lines of movement for link, including strafing
                 if (upPressed || downPressed || leftPressed || rightPressed) {
                     //set the velocity of the player equal to the constant movement velocity variable
@@ -692,36 +717,54 @@ public class Zelda {
             // image so that it triggers a new scene...
             // I do not condone hardcoding values, but i will allow it for this project – Robby
 
+            BufferedImage[][] currentTileSet;
+
+            if (!isOverworld) {
+                currentTileSet = dungeonTiles;
+            } else {
+                currentTileSet = overworldTiles;
+            }
+
+            //load dungeon
+            if (isOverworld && row == 1 && col == 2 && p1.getX() > 220 && p1.getY() < 80 && p1.getX() < 250) {
+                //change boolean to dungeon
+                isOverworld = false;
+                currentBackground = dungeonTiles[1][0];
+                p1.moveto(150, 150);
+                col = 0;
+                row = 1;
+            }
+
             //left bound
             if (p1.getX() <= -2.0) {
-                if (overworldTiles[row][col - 1] != null && col > 0) {
+                if (currentTileSet[row][col - 1] != null && col > 0) {
                     p1.moveto(p1.getX() + 328, p1.getY());
-                    currentBackground = overworldTiles[row][col - 1];
+                    currentBackground = currentTileSet[row][col - 1];
                     col--;
                 }
             }
             //right bound
             if (p1.getX() >= 328.0) {
-                if (overworldTiles[row][col + 1] != null && col < 2) {
+                if (currentTileSet[row][col + 1] != null && col < 2) {
                     p1.moveto(p1.getX() - 328, p1.getY());
-                    currentBackground = overworldTiles[row][col + 1];
+                    currentBackground = currentTileSet[row][col + 1];
                     col++;
                 }
             }
             //top bound
             if(p1.getY() <= 33){
-                if (overworldTiles[row - 1][col] != null && row > 0) {
+                if (currentTileSet[row - 1][col] != null && row > 0) {
                     p1.moveto(p1.getX(), p1.getY() + 245);
-                    currentBackground = overworldTiles[row - 1][col];
+                    currentBackground = currentTileSet[row - 1][col];
                     row--;
                 }
 
             }
             //bottom bound
             if(p1.getY() >= 264){
-                if (overworldTiles[row + 1][col] != null && row < 2) {
+                if (currentTileSet[row + 1][col] != null && row < 2) {
                     p1.moveto(p1.getX(), p1.getY() - 245);
-                    currentBackground = overworldTiles[row + 1][col];
+                    currentBackground = currentTileSet[row + 1][col];
                     row++;
                 }
             }
