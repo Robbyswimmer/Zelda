@@ -41,6 +41,11 @@ public class Zelda {
     //BufferedImage array to hold Links animations
     private static BufferedImage[] link = new BufferedImage[16];
 
+    //links starting coordinates for changing the maps
+    //NOTE: they are in array format, so 1 = 2 and 2 = 3 because it is 0 indexed
+    private static int col = 1;
+    private static int row = 2;
+
     //BufferedImage array to hold castle scenese
     private static BufferedImage[] castleScenes = new BufferedImage[5];
 
@@ -49,6 +54,22 @@ public class Zelda {
 
     //BufferedImage arrays for holding enemy animations
     private static BufferedImage[] purpleArmos = new BufferedImage[2];
+
+    //Hashmap to store the images associated with values of Link's life
+    private static BufferedImage[] heartImages = new BufferedImage[6];
+
+    //2d arrays for storing the map tiles
+    // FIXME I would like the datatype to be for a custom map object that stores data about enemies and other necessary information
+    private static BufferedImage[][] overworldTiles = new BufferedImage[3][3];
+    private static BufferedImage[][] dungeonTiles = new BufferedImage[3][3];
+
+    //this is a variable to determine the current map tile that is being drawn by the drawBackground method
+    //  -> it should change based on collisions that link makes with the map
+    private static BufferedImage currentBackground;
+
+    //Integer to store link's health:
+    //   1 = half heart, 2 = 1 heart... 6 = 3 hearts
+    private static int linksHealth;
 
     //additional movement variables for link
     private static double lastPressed;
@@ -151,11 +172,18 @@ public class Zelda {
         p1originalX = 150;
         p1originalY = 150;
 
+        //initialize links health
+        linksHealth = 5;
+
 //        purpleArmosList.add(new ImageObject(100, 200, 20, 20, 0.0));
 
         //attempt to import all images for maps, player, and enemies
         try {
+
+            //currentBackground is initialized to the starting background
             tempBG = ImageIO.read(new File("Images/castle/castle0.png"));
+            currentBackground = tempBG;
+
             player = ImageIO.read(new File("Images/Link/walking0.png"));
             player2 = ImageIO.read(new File("Images/Link/walking1.png"));
             currentPlayer = player;
@@ -195,6 +223,15 @@ public class Zelda {
                 System.out.println("Initialized: Images/dungeon/angler" + (i) + ".png");
             }
 
+            for (int i = 0; i < 6; i++) {
+                BufferedImage tempHeartImage = ImageIO.read(new File("Images/hearts/heart" + (i + 1) + ".png"));
+                heartImages[i] = tempHeartImage;
+                System.out.println("Initialized: Images/hearts/heart" + (i + 1) + ".png");
+            }
+
+            loadOverworldImages();
+            //loadDungeonImages();
+
             //imports the images for the purple Armos
             purpleArmos[0] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
             purpleArmos[1] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
@@ -202,6 +239,20 @@ public class Zelda {
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
         }
+    }
+
+    private static void loadOverworldImages() {
+
+        try {
+            overworldTiles[2][1] = ImageIO.read(new File("Images/castle/castle0.png"));
+            overworldTiles[2][2] = ImageIO.read(new File("Images/castle/castle1.png"));
+            overworldTiles[2][0] = ImageIO.read(new File("Images/castle/castle2.png"));
+            overworldTiles[1][1] = ImageIO.read(new File("Images/castle/castle3.png"));
+            overworldTiles[1][2] = ImageIO.read(new File("Images/castle/castle4.png"));
+        } catch (IOException ioe) {
+            System.out.println("Exception in loadOverworld method!");
+        }
+
     }
 
     /**
@@ -283,7 +334,7 @@ public class Zelda {
                 drawBackground();
                 drawPlayer();
                 drawEnemies();
-                System.out.println("Player x pos: " + p1.getX() + ", Player y pos: " + p1.getY());
+//                System.out.println("Player x pos: " + p1.getX() + ", Player y pos: " + p1.getY());
                 try {
                     Thread.sleep(48);
                 } catch (InterruptedException ie) {
@@ -391,6 +442,16 @@ public class Zelda {
     }
 
     /**
+     * Method for drawing links current health
+     */
+    private static void drawHearts() {
+        Graphics g = appFrame.getGraphics();
+        Graphics2D g2d = (Graphics2D) g;
+//        g2d.drawImage(heartImages[linksHealth], 10, 40, 110, 40, null);
+
+    }
+
+    /**
      * Draws the player graphics and animations according to what buttons are being pressed
      */
     private static void drawPlayer() {
@@ -495,7 +556,11 @@ public class Zelda {
 //        g2d.setBackground(Color.white);
 //        g2d.setColor(Color.WHITE);
 //        g2d.fillRect(0, 0, 500, 550);
-        g2d.drawImage(tempBG, XOFFSET, YOFFSET, null);
+        g2d.drawImage(currentBackground, XOFFSET, YOFFSET, null);
+
+        //this draws the hearts better for some reason than having the drawhearts method be separate
+        //please do not delete :(
+        g2d.drawImage(heartImages[linksHealth], 10, 40, 70, 20, null);
     }
 
     /**
@@ -625,22 +690,40 @@ public class Zelda {
         private static void changeSceneBackground() {
             // perhaps create a collision for each background
             // image so that it triggers a new scene...
+            // I do not condone hardcoding values, but i will allow it for this project – Robby
 
             //left bound
             if (p1.getX() <= -2.0) {
-                p1.moveto(p1.getX() + 328, p1.getY());
+                if (overworldTiles[row][col - 1] != null && col > 0) {
+                    p1.moveto(p1.getX() + 328, p1.getY());
+                    currentBackground = overworldTiles[row][col - 1];
+                    col--;
+                }
             }
             //right bound
             if (p1.getX() >= 328.0) {
-                p1.moveto(p1.getX() - 328, p1.getY());
+                if (overworldTiles[row][col + 1] != null && col < 2) {
+                    p1.moveto(p1.getX() - 328, p1.getY());
+                    currentBackground = overworldTiles[row][col + 1];
+                    col++;
+                }
             }
             //top bound
             if(p1.getY() <= 33){
-                p1.moveto(p1.getX(), p1.getY() + 245);
+                if (overworldTiles[row - 1][col] != null && row > 0) {
+                    p1.moveto(p1.getX(), p1.getY() + 245);
+                    currentBackground = overworldTiles[row - 1][col];
+                    row--;
+                }
+
             }
             //bottom bound
             if(p1.getY() >= 264){
-                p1.moveto(p1.getX(), p1.getY() - 245);
+                if (overworldTiles[row + 1][col] != null && row < 2) {
+                    p1.moveto(p1.getX(), p1.getY() - 245);
+                    currentBackground = overworldTiles[row + 1][col];
+                    row++;
+                }
             }
         }
 
