@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,13 +15,9 @@
         <entry file="file://$PROJECT_DIR$/src/Zelda.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="586" column="100" lean-forward="true" selection-start-line="586" selection-start-column="100" selection-end-line="586" selection-end-column="100" />
+              <caret line="586" column="100" selection-start-line="586" selection-start-column="100" selection-end-line="586" selection-end-column="100" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#18241#18242#0" expanded="true" />
-                <element signature="e#18293#18294#0" expanded="true" />
-                <element signature="e#18580#18581#0" expanded="true" />
-                <element signature="e#18634#18635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,6 +77,12 @@
       </list>
     </option>
   </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1915" />
+    <option name="y" value="25" />
+    <option name="width" value="1879" />
+    <option name="height" value="999" />
+  </component>
   <component name="ProjectId" id="1pRloqc9IBhKfc7zhZ6bTqbBIEf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -86,8 +90,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -98,17 +100,14 @@
             <path>
               <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
               <item name="Zelda" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -191,16 +190,18 @@
       <workItem from="1615260002579" duration="1219000" />
       <workItem from="1615308439469" duration="1934000" />
       <workItem from="1615329670958" duration="4819000" />
+      <workItem from="1615398690729" duration="38000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1379000" />
+    <option name="totallyTimeSpent" value="1417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1915" y="25" width="1879" height="999" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15623298" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15786609" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -232,7 +233,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -303,6 +304,33 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state width="1579" height="330" key="GridCell.Tab.1.right/1792.25.1920.1055/0.25.1792.1034@1792.25.1920.1055" timestamp="1615331722281" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Zelda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="586" column="100" selection-start-line="586" selection-start-column="100" selection-end-line="586" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler0.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler2.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler3.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler1.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler4.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
