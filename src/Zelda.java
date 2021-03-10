@@ -63,8 +63,8 @@ public class Zelda {
 
     //2d arrays for storing the map tiles
     // FIXME I would like the datatype to be for a custom map object that stores data about enemies and other necessary information
-    private static BufferedImage[][] overworldTiles = new BufferedImage[3][3];
-    private static BufferedImage[][] dungeonTiles = new BufferedImage[3][3];
+    private static mapObject[][] overworldTiles = new mapObject[3][3];
+    private static mapObject[][] dungeonTiles = new mapObject[3][3];
 
     //this is a variable to determine the current map tile that is being drawn by the drawBackground method
     //  -> it should change based on collisions that link makes with the map
@@ -193,7 +193,7 @@ public class Zelda {
 
         //attempt to import all images for maps, player, and enemies
         try {
-
+            
             //currentBackground is initialized to the starting background
             tempBG = ImageIO.read(new File("Images/castle/castle0.png"));
             currentBackground = tempBG;
@@ -258,11 +258,15 @@ public class Zelda {
     private static void loadOverworldImages() {
 
         try {
-            overworldTiles[2][1] = ImageIO.read(new File("Images/castle/castle0.png"));
-            overworldTiles[2][2] = ImageIO.read(new File("Images/castle/castle1.png"));
-            overworldTiles[2][0] = ImageIO.read(new File("Images/castle/castle2.png"));
-            overworldTiles[1][1] = ImageIO.read(new File("Images/castle/castle3.png"));
-            overworldTiles[1][2] = ImageIO.read(new File("Images/castle/castle4.png"));
+
+            BufferedImage testImage = ImageIO.read(new File("Images/castle/castle0.png"));
+            mapObject test = new mapObject(testImage);
+
+            overworldTiles[2][1] = new mapObject(ImageIO.read(new File("Images/castle/castle0.png")));
+            overworldTiles[2][2] = new mapObject(ImageIO.read(new File("Images/castle/castle1.png")));
+            overworldTiles[2][0] = new mapObject(ImageIO.read(new File("Images/castle/castle2.png")));
+            overworldTiles[1][1] = new mapObject(ImageIO.read(new File("Images/castle/castle3.png")));
+            overworldTiles[1][2] = new mapObject(ImageIO.read(new File("Images/castle/castle4.png")));
         } catch (IOException ioe) {
             System.out.println("Exception in loadOverworld method!");
         }
@@ -272,11 +276,19 @@ public class Zelda {
     private static void loadDungeonImages() {
 
         try {
-            dungeonTiles[1][0] = ImageIO.read(new File("Images/dungeon/angler0.png"));
-            dungeonTiles[2][0] = ImageIO.read(new File("Images/dungeon/angler2.png"));
-            dungeonTiles[2][1] = ImageIO.read(new File("Images/dungeon/angler3.png"));
-            dungeonTiles[1][1] = ImageIO.read(new File("Images/dungeon/angler1.png"));
-            dungeonTiles[0][1] = ImageIO.read(new File("Images/dungeon/angler4.png"));
+
+            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler0.png")));
+            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler2.png")));
+            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler3.png")));
+            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler1.png")));
+            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler4.png")));
+
+
+//            dungeonTiles[1][0] = ImageIO.read(new File("Images/dungeon/angler0.png"));
+//            dungeonTiles[2][0] = ImageIO.read(new File("Images/dungeon/angler2.png"));
+//            dungeonTiles[2][1] = ImageIO.read(new File("Images/dungeon/angler3.png"));
+//            dungeonTiles[1][1] = ImageIO.read(new File("Images/dungeon/angler1.png"));
+//            dungeonTiles[0][1] = ImageIO.read(new File("Images/dungeon/angler4.png"));
         } catch (IOException ioe) {
             System.out.println("Exception in loadOverworld method!");
         }
@@ -582,6 +594,7 @@ public class Zelda {
     private static void drawBackground() {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
+
         g2d.drawImage(currentBackground, XOFFSET, YOFFSET, null);
 
         //this draws the hearts better for some reason than having the drawhearts method be separate
@@ -758,7 +771,7 @@ public class Zelda {
             // image so that it triggers a new scene...
             // I do not condone hardcoding values, but i will allow it for this project – Robby
 
-            BufferedImage[][] currentTileSet;
+            mapObject[][] currentTileSet;
 
             if (!isOverworld) {
                 currentTileSet = dungeonTiles;
@@ -770,7 +783,7 @@ public class Zelda {
             if (isOverworld && row == 1 && col == 2 && p1.getX() > 220 && p1.getY() < 80 && p1.getX() < 250) {
                 //change boolean to dungeon
                 isOverworld = false;
-                currentBackground = dungeonTiles[1][0];
+                currentBackground = dungeonTiles[1][0].getImage();
                 p1.moveto(150, 150);
                 col = 0;
                 row = 1;
@@ -780,7 +793,7 @@ public class Zelda {
             if (p1.getX() <= -2.0) {
                 if (currentTileSet[row][col - 1] != null && col > 0) {
                     p1.moveto(p1.getX() + 328, p1.getY());
-                    currentBackground = currentTileSet[row][col - 1];
+                    currentBackground = currentTileSet[row][col - 1].getImage();
                     col--;
                 }
             }
@@ -788,7 +801,7 @@ public class Zelda {
             if (p1.getX() >= 328.0) {
                 if (currentTileSet[row][col + 1] != null && col < 2) {
                     p1.moveto(p1.getX() - 328, p1.getY());
-                    currentBackground = currentTileSet[row][col + 1];
+                    currentBackground = currentTileSet[row][col + 1].getImage();
                     col++;
                 }
             }
@@ -796,7 +809,7 @@ public class Zelda {
             if(p1.getY() <= 33){
                 if (currentTileSet[row - 1][col] != null && row > 0) {
                     p1.moveto(p1.getX(), p1.getY() + 245);
-                    currentBackground = currentTileSet[row - 1][col];
+                    currentBackground = currentTileSet[row - 1][col].getImage();
                     row--;
                 }
 
@@ -805,7 +818,7 @@ public class Zelda {
             if(p1.getY() >= 264){
                 if (currentTileSet[row + 1][col] != null && row < 2) {
                     p1.moveto(p1.getX(), p1.getY() - 245);
-                    currentBackground = currentTileSet[row + 1][col];
+                    currentBackground = currentTileSet[row + 1][col].getImage();
                     row++;
                 }
             }
@@ -961,6 +974,22 @@ public class Zelda {
 
         public int getY() {
             return yCoord;
+        }
+    }
+
+    /**
+     * Map Object class to store information about every tile of the map
+     */
+    private static class mapObject {
+
+        BufferedImage mapTile;
+
+        public mapObject(BufferedImage tile) {
+            mapTile = tile;
+        }
+
+        public BufferedImage getImage() {
+            return mapTile;
         }
     }
 
