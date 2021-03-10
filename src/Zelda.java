@@ -647,6 +647,25 @@ public class Zelda {
                     changeSceneBackground();
                 }
 
+//                if(linksHealth < 0){
+//                    endgame = true;
+//                }
+
+                //TODO need to check with other enemies too!!
+                //overlapping link with armos
+                if (collision(p1.getX(), p1.getY(), armos.getX(), armos.getY())) {
+                    if (!aPressed || !xPressed) { // shield not up, sword not used
+                        //link loses half heart
+                        //FIXME checks too quickly.. kinda works, but link goes to 0 super fast
+                        // and both characters disappear
+                        //linksHealth -= 1;
+                        //System.out.println(linksHealth);
+                    } else if (xPressed) { // sword used
+                        //enemy loses half heart
+
+                    }
+                }
+
 //                System.out.println("X coordinates: " + p1.getX() + ", Y coordinates: " + p1.getY());
 
                 //handles lines of movement for link, including strafing
@@ -772,6 +791,11 @@ public class Zelda {
 
         private static boolean inBounds(double playerX, double playerY) {
             return playerX < -2.0 && playerX > 328.0 && playerY < 25 && playerY > 300;
+        }
+
+        private static boolean collision(double playerX, double playerY, double enemyX, double enemyY) {
+            return (playerX < enemyX) && (enemyX < playerX + player.getWidth()) && (playerY < enemyY) &&
+                    (enemyY - player.getHeight() < playerY);
         }
     }
 
