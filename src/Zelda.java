@@ -113,12 +113,18 @@ public class Zelda {
     private static Clip clip;
     private static Clip clip2;
 
+    //start a timer at the beginning of the game to track elapsed time since link has been hurt
+    private static long startTime;
+
     /**
      * Main method for calling setup, creating the app frame,
      * initializing the JPanel, creating start and quit buttons,
      * binding movement and attack keys and making the app frame visible
      */
     public static void main(String[] args) {
+
+        //start a timer at the beginning of the game
+        startTime = System.currentTimeMillis();
 
         //initialize setup variables / images
         setup();
@@ -658,7 +664,12 @@ public class Zelda {
                         //link loses half heart
                         //FIXME checks too quickly.. kinda works, but link goes to 0 super fast
                         // and both characters disappear
-                        //linksHealth -= 1;
+                        long current = System.currentTimeMillis();
+                        long timeElapsed = current - startTime;
+                        if (current - startTime > 100) {
+                            linksHealth -= 1;
+                        }
+                        startTime = current;
                         //System.out.println(linksHealth);
                     } else if (xPressed) { // sword used
                         //enemy loses half heart
