@@ -193,7 +193,7 @@ public class Zelda {
 
         //attempt to import all images for maps, player, and enemies
         try {
-            
+
             //currentBackground is initialized to the starting background
             tempBG = ImageIO.read(new File("Images/castle/castle0.png"));
             currentBackground = tempBG;
@@ -248,7 +248,7 @@ public class Zelda {
 
             //imports the images for the purple Armos
             purpleArmos[0] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
-            purpleArmos[1] = ImageIO.read(new File("Images/Enemies/PurpleArmos1.png"));
+            purpleArmos[1] = ImageIO.read(new File("Images/Enemies/PurpleArmos2.png"));
 
         } catch (IOException ioe) {
             System.out.println("Did not import an image correctly in the setup method");
@@ -256,12 +256,7 @@ public class Zelda {
     }
 
     private static void loadOverworldImages() {
-
         try {
-
-            BufferedImage testImage = ImageIO.read(new File("Images/castle/castle0.png"));
-            mapObject test = new mapObject(testImage);
-
             overworldTiles[2][1] = new mapObject(ImageIO.read(new File("Images/castle/castle0.png")));
             overworldTiles[2][2] = new mapObject(ImageIO.read(new File("Images/castle/castle1.png")));
             overworldTiles[2][0] = new mapObject(ImageIO.read(new File("Images/castle/castle2.png")));
@@ -274,21 +269,12 @@ public class Zelda {
     }
 
     private static void loadDungeonImages() {
-
         try {
-
             dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler0.png")));
             dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler2.png")));
             dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler3.png")));
             dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler1.png")));
             dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler4.png")));
-
-
-//            dungeonTiles[1][0] = ImageIO.read(new File("Images/dungeon/angler0.png"));
-//            dungeonTiles[2][0] = ImageIO.read(new File("Images/dungeon/angler2.png"));
-//            dungeonTiles[2][1] = ImageIO.read(new File("Images/dungeon/angler3.png"));
-//            dungeonTiles[1][1] = ImageIO.read(new File("Images/dungeon/angler1.png"));
-//            dungeonTiles[0][1] = ImageIO.read(new File("Images/dungeon/angler4.png"));
         } catch (IOException ioe) {
             System.out.println("Exception in loadOverworld method!");
         }
@@ -522,6 +508,7 @@ public class Zelda {
 
         //create a test enemy
         drawCharacterHelper(armos, 0, g2d, purpleArmos);
+
     }
 
     /**
@@ -628,16 +615,16 @@ public class Zelda {
                 long enemyMovementTimer2 = System.currentTimeMillis();
                 long dif = enemyMovementTimer2 - enemyMovementTimer;
 
-                //angle = 0.0 moves to the right, anlge = 90.0 moves to the left
+                //angle = 0.0 moves to the right, angle = 90.0 moves to the left
                 //oscillates left and right for 2.8 seconds respectively
                 if (dif < 2800) {
-                    armos.setInternalAngle(0.0);
-                    armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
+                    armos.setInternalAngle(-90.0);
+                    armos.move(0.0, velocityStep * Math.sin(armos.getInternalAngle()));
                 }
 
                 if (dif < 5600 && dif >= 2800) {
                     armos.setInternalAngle(90.0);
-                    armos.move(velocityStep * Math.cos(armos.getInternalAngle() * 1.5), 0.0);
+                    armos.move(0.0, velocityStep * Math.sin(armos.getInternalAngle()));
                 }
 
                 //if a cycle has been completed, reset the timer so that it can start over effectively
@@ -677,9 +664,8 @@ public class Zelda {
                     changeSceneBackground();
                 }
 
-//                if(linksHealth < 0){
-//                    endgame = true;
-//                }
+                if(linksHealth < 0)
+                    endgame = true;
 
                 //TODO need to check with other enemies too!!
                 //overlapping link with armos
@@ -694,14 +680,11 @@ public class Zelda {
                             linksHealth -= 1;
                         }
                         startTime = current;
-                        //System.out.println(linksHealth);
                     } else if (xPressed) { // sword used
                         //enemy loses half heart
 
                     }
                 }
-
-//                System.out.println("X coordinates: " + p1.getX() + ", Y coordinates: " + p1.getY());
 
                 //handles lines of movement for link, including strafing
                 if (upPressed || downPressed || leftPressed || rightPressed) {
@@ -756,13 +739,6 @@ public class Zelda {
                 //correct movement code for link
                 p1.move(p1velocity * Math.cos(p1.getInternalAngle()), p1velocity * Math.sin(p1.getInternalAngle()));
 
-                //does wrapping for links ImageObject
-//                int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
-
-                //FIXME maybe implement 'backgroundState' array with screenwrap functionality
-
-                //FIXME maybe implement the clearEnemies and generateEnemies methods here depending on screenWrap
-                //CHECK source code for more info in playerMover
             }
         }
 
