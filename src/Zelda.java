@@ -582,9 +582,6 @@ public class Zelda {
     private static void drawBackground() {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
-//        g2d.setBackground(Color.white);
-//        g2d.setColor(Color.WHITE);
-//        g2d.fillRect(0, 0, 500, 550);
         g2d.drawImage(currentBackground, XOFFSET, YOFFSET, null);
 
         //this draws the hearts better for some reason than having the drawhearts method be separate
@@ -600,6 +597,8 @@ public class Zelda {
         Graphics G = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) G;
 
+        long enemyMovementTimer = System.currentTimeMillis();
+
         public EnemyMover() {
             velocityStep = 0.5;
         }
@@ -611,13 +610,25 @@ public class Zelda {
                 } catch (InterruptedException ie) {
                     System.out.println("Caught exception in EnemyMover!");
                 }
-//                purpleArmosList.get(0).move(velocityStep * Math.cos(purpleArmosList.get(0).getInternalAngle()),
-//                        velocityStep * Math.sin(purpleArmosList.get(0).getInternalAngle()));
+
+                //used to calculate the total duration of time that has passed
+                long enemyMovementTimer2 = System.currentTimeMillis();
+                long dif = enemyMovementTimer2 - enemyMovementTimer;
 
                 //angle = 0.0 moves to the right, anlge = 90.0 moves to the left
-                //FIXME make it so that it moves right for a period of time, then left for the same period and have it repeat
-                armos.setInternalAngle(0.0);
-                armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
+                //oscillates left and right for 2.8 seconds respectively
+                if (dif < 2800) {
+                    armos.setInternalAngle(0.0);
+                    armos.move(velocityStep * Math.cos(armos.getInternalAngle()), 0.0);
+                }
+
+                if (dif < 5600 && dif >= 2800) {
+                    armos.setInternalAngle(90.0);
+                    armos.move(velocityStep * Math.cos(armos.getInternalAngle() * 1.5), 0.0);
+                }
+
+                //if a cycle has been completed, reset the timer so that it can start over effectively
+                if (dif >= 5600) enemyMovementTimer = System.currentTimeMillis();
             }
         }
     }
