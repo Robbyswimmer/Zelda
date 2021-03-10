@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
-    </list>
+    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +14,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zelda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="494" column="54" lean-forward="true" selection-start-line="494" selection-start-column="54" selection-end-line="494" selection-end-column="54" />
+            <state relative-caret-position="-9346">
+              <caret line="488" column="71" lean-forward="true" selection-start-line="488" selection-start-column="71" selection-end-line="488" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#18660#18661#0" expanded="true" />
@@ -137,7 +135,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1615417157190" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1615417597601" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -210,16 +208,15 @@
       <workItem from="1615308439469" duration="1934000" />
       <workItem from="1615329670958" duration="4819000" />
       <workItem from="1615398690729" duration="38000" />
-      <workItem from="1615414017393" duration="3484000" />
+      <workItem from="1615414017393" duration="3525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4901000" />
+    <option name="totallyTimeSpent" value="4942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1915" y="25" width="1879" height="999" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15949918" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -230,7 +227,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22086571" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22086571" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4017758" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -328,8 +325,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Zelda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="494" column="54" lean-forward="true" selection-start-line="494" selection-start-column="54" selection-end-line="494" selection-end-column="54" />
+        <state relative-caret-position="-9346">
+          <caret line="488" column="71" lean-forward="true" selection-start-line="488" selection-start-column="71" selection-end-line="488" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#18660#18661#0" expanded="true" />
