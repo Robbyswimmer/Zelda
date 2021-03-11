@@ -59,6 +59,7 @@ public class Zelda {
 
     //BufferedImage arrays for holding enemy animations
     private static BufferedImage[] purpleArmos = new BufferedImage[2];
+    private static BufferedImage[] yellowArmos = new BufferedImage[2];
 
     //Hashmap to store the images associated with values of Link's life
     private static BufferedImage[] heartImages = new BufferedImage[6];
@@ -329,7 +330,6 @@ public class Zelda {
             armos.setlastposy(200);
             //purpleArmosList.add(armos);
 
-
             try {
                 Thread.sleep(50);
             } catch (InterruptedException ie) {
@@ -512,6 +512,10 @@ public class Zelda {
 
         //create a test enemy
         drawCharacterHelper(armos, 0, g2d, purpleArmos);
+        if(currentBackground.equals(overworldTiles[2][1]) || currentBackground.equals(overworldTiles[2][2])
+                || currentBackground.equals(overworldTiles[1][1]) || currentBackground.equals(overworldTiles[1][2])){
+            drawCharacterHelper(armos, 0, g2d, purpleArmos);
+        }
 
     }
 
