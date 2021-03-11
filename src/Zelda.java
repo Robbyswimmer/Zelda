@@ -274,10 +274,10 @@ public class Zelda {
     private static void loadDungeonImages() {
         try {
             dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler0.png")));
-            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler2.png")));
-            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler3.png")));
-            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler1.png")));
-            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler4.png")));
+            dungeonTiles[2][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler2.png")));
+            dungeonTiles[2][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler3.png")));
+            dungeonTiles[1][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler1.png")));
+            dungeonTiles[0][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler4.png")));
         } catch (IOException ioe) {
             System.out.println("Exception in loadOverworld method!");
         }
@@ -361,7 +361,7 @@ public class Zelda {
             while (!endgame) {
                 drawBackground();
                 drawPlayer();
-                if(!wasKilled) {
+                if (!wasKilled) {
                     drawEnemies();
                 }
 //                System.out.println("Player x pos: " + p1.getX() + ", Player y pos: " + p1.getY());
@@ -512,11 +512,16 @@ public class Zelda {
 
         //create a test enemy
         drawCharacterHelper(armos, 0, g2d, purpleArmos);
-        if(currentBackground.equals(overworldTiles[2][1]) || currentBackground.equals(overworldTiles[2][2])
-                || currentBackground.equals(overworldTiles[1][1]) || currentBackground.equals(overworldTiles[1][2])){
+        if (currentBackground.equals(overworldTiles[2][1]) || currentBackground.equals(overworldTiles[2][2])
+                || currentBackground.equals(overworldTiles[1][1]) || currentBackground.equals(overworldTiles[1][2])) {
             drawCharacterHelper(armos, 0, g2d, purpleArmos);
         }
 
+        drawCharacterHelper(armos, 0, g2d, purpleArmos);
+        if (currentBackground.equals(dungeonTiles[1][0]) || currentBackground.equals(dungeonTiles[1][0])
+                || currentBackground.equals(dungeonTiles[1][0]) || currentBackground.equals(dungeonTiles[1][0])) {
+            drawCharacterHelper(armos, 0, g2d, purpleArmos);
+        }
     }
 
     /**
