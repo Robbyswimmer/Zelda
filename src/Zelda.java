@@ -25,6 +25,8 @@ public class Zelda {
     //Determines if the game is over
     private static boolean endgame;
 
+    private static boolean wasKilled = false;
+
     //main game frame
     private static JFrame appFrame;
     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
@@ -359,7 +361,9 @@ public class Zelda {
             while (!endgame) {
                 drawBackground();
                 drawPlayer();
-                drawEnemies();
+                if(!wasKilled) {
+                    drawEnemies();
+                }
 //                System.out.println("Player x pos: " + p1.getX() + ", Player y pos: " + p1.getY());
                 try {
                     Thread.sleep(48);
@@ -664,25 +668,24 @@ public class Zelda {
                     changeSceneBackground();
                 }
 
-                if(linksHealth < 0)
+                if (linksHealth < 0)
                     endgame = true;
 
                 //TODO need to check with other enemies too!!
                 //overlapping link with armos
                 if (collision(p1.getX(), p1.getY(), armos.getX(), armos.getY())) {
-                    if (!aPressed || !xPressed) { // shield not up, sword not used
+                    if (xPressed) { // sword used
+                        wasKilled = true;
+                    } else if (!aPressed || !xPressed) { // shield not up, sword not used
                         //link loses half heart
                         //FIXME checks too quickly.. kinda works, but link goes to 0 super fast
                         // and both characters disappear
                         long current = System.currentTimeMillis();
                         long timeElapsed = current - startTime;
-                        if (current - startTime > 100) {
+                        if (timeElapsed > 100) {
                             linksHealth -= 1;
                         }
                         startTime = current;
-                    } else if (xPressed) { // sword used
-                        //enemy loses half heart
-
                     }
                 }
 
@@ -782,7 +785,7 @@ public class Zelda {
                 }
             }
             //top bound
-            if(p1.getY() <= 33){
+            if (p1.getY() <= 33) {
                 if (currentTileSet[row - 1][col] != null && row > 0) {
                     p1.moveto(p1.getX(), p1.getY() + 245);
                     currentBackground = currentTileSet[row - 1][col].getImage();
@@ -791,7 +794,7 @@ public class Zelda {
 
             }
             //bottom bound
-            if(p1.getY() >= 264){
+            if (p1.getY() >= 264) {
                 if (currentTileSet[row + 1][col] != null && row < 2) {
                     p1.moveto(p1.getX(), p1.getY() - 245);
                     currentBackground = currentTileSet[row + 1][col].getImage();
