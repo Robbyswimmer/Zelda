@@ -512,17 +512,6 @@ public class Zelda {
 
         //create a test enemy
         drawCharacterHelper(armos, 0, g2d, purpleArmos);
-        if (currentBackground.equals(overworldTiles[2][1]) || currentBackground.equals(overworldTiles[2][2])
-                || currentBackground.equals(overworldTiles[1][1]) || currentBackground.equals(overworldTiles[1][2])) {
-            drawCharacterHelper(armos, 0, g2d, purpleArmos);
-        }
-
-        drawCharacterHelper(armos, 0, g2d, purpleArmos);
-        if (currentBackground.equals(dungeonTiles[1][0]) || currentBackground.equals(dungeonTiles[2][0])
-                || currentBackground.equals(dungeonTiles[2][1]) || currentBackground.equals(dungeonTiles[1][1]) ||
-                currentBackground.equals(dungeonTiles[0][1])) {
-            drawCharacterHelper(armos, 0, g2d, purpleArmos);
-        }
     }
 
     /**
