@@ -72,6 +72,7 @@ public class Zelda {
     //this is a variable to determine the current map tile that is being drawn by the drawBackground method
     //  -> it should change based on collisions that link makes with the map
     private static BufferedImage currentBackground;
+    private static mapObject currentMap;
 
     //Integer to store link's health:
     //   1 = half heart, 2 = 1 heart... 6 = 3 hearts
@@ -118,6 +119,8 @@ public class Zelda {
 
     //start a timer at the beginning of the game to track elapsed time since link has been hurt
     private static long startTime;
+
+    private static boolean flag;
 
     /**
      * Main method for calling setup, creating the app frame,
@@ -260,11 +263,11 @@ public class Zelda {
 
     private static void loadOverworldImages() {
         try {
-            overworldTiles[2][1] = new mapObject(ImageIO.read(new File("Images/castle/castle0.png")));
-            overworldTiles[2][2] = new mapObject(ImageIO.read(new File("Images/castle/castle1.png")));
-            overworldTiles[2][0] = new mapObject(ImageIO.read(new File("Images/castle/castle2.png")));
-            overworldTiles[1][1] = new mapObject(ImageIO.read(new File("Images/castle/castle3.png")));
-            overworldTiles[1][2] = new mapObject(ImageIO.read(new File("Images/castle/castle4.png")));
+            overworldTiles[2][1] = new mapObject(ImageIO.read(new File("Images/castle/castle0.png")), 100, 50);
+            overworldTiles[2][2] = new mapObject(ImageIO.read(new File("Images/castle/castle1.png")), 50, 50);
+            overworldTiles[2][0] = new mapObject(ImageIO.read(new File("Images/castle/castle2.png")), 250, 50);
+            overworldTiles[1][1] = new mapObject(ImageIO.read(new File("Images/castle/castle3.png")), 150, 100);
+            overworldTiles[1][2] = new mapObject(ImageIO.read(new File("Images/castle/castle4.png")), 100, 100);
         } catch (IOException ioe) {
             System.out.println("Exception in loadOverworld method!");
         }
@@ -273,11 +276,11 @@ public class Zelda {
 
     private static void loadDungeonImages() {
         try {
-            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler0.png")));
-            dungeonTiles[2][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler2.png")));
-            dungeonTiles[2][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler3.png")));
-            dungeonTiles[1][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler1.png")));
-            dungeonTiles[0][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler4.png")));
+            dungeonTiles[1][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler0.png")), 100, 50);
+            dungeonTiles[2][0] = new mapObject(ImageIO.read(new File("Images/dungeon/angler2.png")), 50, 50);
+            dungeonTiles[2][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler3.png")), 250, 50);
+            dungeonTiles[1][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler1.png")), 150, 100);
+            dungeonTiles[0][1] = new mapObject(ImageIO.read(new File("Images/dungeon/angler4.png")), 100, 100);
         } catch (IOException ioe) {
             System.out.println("Exception in loadOverworld method!");
         }
@@ -380,12 +383,56 @@ public class Zelda {
      */
     private static class SoundSystem implements Runnable {
         public void run() {
-            backgroundMusic();
+//            backgroundMusic();
+
+            try {
+                AudioInputStream audioFile = AudioSystem.getAudioInputStream(new File("Sounds/main.wav"));
+                clip2 = AudioSystem.getClip();
+                clip2.open(audioFile);
+                clip2.start();
+
+                Thread.sleep(120);
+            } catch (UnsupportedAudioFileException uafe) {
+                System.out.println("Unsupported audio file type!");
+            } catch (IOException ioe) {
+                System.out.println("IO exception for a sound!");
+            } catch (LineUnavailableException lue) {
+                System.out.println("Line unavailable exception for a sound!");
+            } catch (InterruptedException ie) {
+                System.out.println("Interrupted exception for one of the sounds!");
+            }
+
+
+            Clip clip3;
+            int i = 0;
+
             while (!endgame) {
                 //links sounds
                 runningSounds();
                 swordSounds();
                 shieldSounds();
+
+                if (!isOverworld && i == 0) {
+                    try {
+                        clip2.stop();
+                        AudioInputStream audioFile2 = AudioSystem.getAudioInputStream(new File("Sounds/dungeon-music.wav"));
+                        clip3 = AudioSystem.getClip();
+                        clip3.open(audioFile2);
+                        clip3.start();
+                        i++;
+
+                        Thread.sleep(120);
+                    } catch (UnsupportedAudioFileException uafe) {
+                        System.out.println("Unsupported audio file type!");
+                    } catch (IOException ioe) {
+                        System.out.println("IO exception for a sound!");
+                    } catch (LineUnavailableException lue) {
+                        System.out.println("Line unavailable exception for a sound!");
+                    } catch (InterruptedException ie) {
+                        System.out.println("Interrupted exception for one of the sounds!");
+                    }
+                }
+
                 try {
                     Thread.sleep(48);
                 } catch (InterruptedException ie) {
@@ -509,6 +556,10 @@ public class Zelda {
     private static void drawEnemies() {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2d = (Graphics2D) g;
+
+
+//        armos.x = currentMap.enemyX;
+//        armos.y = currentMap.enemyY;
 
         //create a test enemy
         drawCharacterHelper(armos, 0, g2d, purpleArmos);
@@ -670,15 +721,29 @@ public class Zelda {
                 if (linksHealth < 0)
                     endgame = true;
 
-                //TODO need to check with other enemies too!!
                 //overlapping link with armos
                 if (collision(p1.getX(), p1.getY(), armos.getX(), armos.getY())) {
                     if (xPressed) { // sword used
                         wasKilled = true;
+
+                        try {
+                            AudioInputStream ais2 = AudioSystem.getAudioInputStream(new File("Enemy-Die.wav"));
+                            Clip clip4 = AudioSystem.getClip();
+                            clip4.open(ais2);
+                            clip4.start();
+                            Thread.sleep(120);
+                        } catch (UnsupportedAudioFileException uafe) {
+                            System.out.println("Unsupported audio file type!");
+                        } catch (IOException ioe) {
+                            System.out.println("IO exception for a sound!");
+                        } catch (LineUnavailableException lue) {
+                            System.out.println("Line unavailable exception for a sound!");
+                        } catch (InterruptedException ie) {
+                            System.out.println("Interrupted exception for one of the sounds!");
+                        }
+
                     } else if (!aPressed || !xPressed) { // shield not up, sword not used
                         //link loses half heart
-                        //FIXME checks too quickly.. kinda works, but link goes to 0 super fast
-                        // and both characters disappear
                         long current = System.currentTimeMillis();
                         long timeElapsed = current - startTime;
                         if (timeElapsed > 100) {
@@ -762,16 +827,31 @@ public class Zelda {
                 //change boolean to dungeon
                 isOverworld = false;
                 currentBackground = dungeonTiles[1][0].getImage();
+                currentMap = dungeonTiles[1][0];
                 p1.moveto(150, 150);
                 col = 0;
                 row = 1;
             }
+
+
+            //load dungeon
+            if (!isOverworld && row == 0 && col == 1 && p1.getX() > 300) {
+                //change boolean to dungeon
+                isOverworld = true;
+                currentBackground = overworldTiles[1][1].getImage();
+                currentMap = overworldTiles[1][1];
+                p1.moveto(175, 80);
+                col = 1;
+                row = 1;
+            }
+
 
             //left bound
             if (p1.getX() <= -2.0) {
                 if (currentTileSet[row][col - 1] != null && col > 0) {
                     p1.moveto(p1.getX() + 328, p1.getY());
                     currentBackground = currentTileSet[row][col - 1].getImage();
+                    currentMap = currentTileSet[row][col - 1];
                     col--;
                 }
             }
@@ -780,6 +860,7 @@ public class Zelda {
                 if (currentTileSet[row][col + 1] != null && col < 2) {
                     p1.moveto(p1.getX() - 328, p1.getY());
                     currentBackground = currentTileSet[row][col + 1].getImage();
+                    currentMap = currentTileSet[row][col + 1];
                     col++;
                 }
             }
@@ -788,6 +869,7 @@ public class Zelda {
                 if (currentTileSet[row - 1][col] != null && row > 0) {
                     p1.moveto(p1.getX(), p1.getY() + 245);
                     currentBackground = currentTileSet[row - 1][col].getImage();
+                    currentMap = currentTileSet[row - 1][col];
                     row--;
                 }
 
@@ -797,6 +879,7 @@ public class Zelda {
                 if (currentTileSet[row + 1][col] != null && row < 2) {
                     p1.moveto(p1.getX(), p1.getY() - 245);
                     currentBackground = currentTileSet[row + 1][col].getImage();
+                    currentMap = currentTileSet[row + 1][col];
                     row++;
                 }
             }
@@ -961,13 +1044,22 @@ public class Zelda {
     private static class mapObject {
 
         BufferedImage mapTile;
+        int enemyX;
+        int enemyY;
 
-        public mapObject(BufferedImage tile) {
+        public mapObject(BufferedImage tile, int enemyX, int enemyY) {
             mapTile = tile;
+            this.enemyX = enemyX;
+            this.enemyY = enemyY;
         }
 
         public BufferedImage getImage() {
             return mapTile;
+        }
+
+        public static void setArmosPosition(int x, int y) {
+            armos.x = x;
+            armos.y = y;
         }
     }
 

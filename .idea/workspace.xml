@@ -1,11 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="" />
+    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$mapObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$mapObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zelda.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="733" column="46" lean-forward="true" selection-start-line="733" selection-start-column="46" selection-end-line="733" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#19492#19493#0" expanded="true" />
+                <element signature="e#19544#19545#0" expanded="true" />
+                <element signature="e#19831#19832#0" expanded="true" />
+                <element signature="e#19885#19886#0" expanded="true" />
+                <element signature="e#22800#22801#0" expanded="true" />
+                <element signature="e#22842#22843#0" expanded="true" />
+                <element signature="e#24493#24494#0" expanded="true" />
+                <element signature="e#24533#24534#0" expanded="true" />
+                <element signature="e#32660#32661#0" expanded="true" />
+                <element signature="e#32695#32696#0" expanded="true" />
+                <element signature="e#32738#32739#0" expanded="true" />
+                <element signature="e#32776#32777#0" expanded="true" />
+                <element signature="e#33714#33715#0" expanded="true" />
+                <element signature="e#33749#33750#0" expanded="true" />
+                <element signature="e#33793#33794#0" expanded="true" />
+                <element signature="e#33831#33832#0" expanded="true" />
+                <element signature="e#36508#36509#0" expanded="true" />
+                <element signature="e#36548#36549#0" expanded="true" />
+                <element signature="e#36583#36584#0" expanded="true" />
+                <element signature="e#36617#36618#0" expanded="true" />
+                <element signature="e#36652#36653#0" expanded="true" />
+                <element signature="e#36686#36687#0" expanded="true" />
+                <element signature="e#36715#36716#0" expanded="true" />
+                <element signature="e#36752#36753#0" expanded="true" />
+                <element signature="e#36781#36782#0" expanded="true" />
+                <element signature="e#36818#36819#0" expanded="true" />
+                <element signature="e#37244#37245#0" expanded="true" />
+                <element signature="e#37282#37283#0" expanded="true" />
+                <element signature="e#38931#38932#0" expanded="true" />
+                <element signature="e#38963#38964#0" expanded="true" />
+                <element signature="e#38995#38996#0" expanded="true" />
+                <element signature="e#39027#39028#0" expanded="true" />
+                <element signature="e#39066#39067#0" expanded="true" />
+                <element signature="e#39105#39106#0" expanded="true" />
+                <element signature="e#39144#39145#0" expanded="true" />
+                <element signature="e#39183#39184#0" expanded="true" />
+                <element signature="e#39232#39233#0" expanded="true" />
+                <element signature="e#39272#39273#0" expanded="true" />
+                <element signature="e#39321#39322#0" expanded="true" />
+                <element signature="e#39361#39362#0" expanded="true" />
+                <element signature="e#39397#39398#0" expanded="true" />
+                <element signature="e#39434#39435#0" expanded="true" />
+                <element signature="e#39471#39472#0" expanded="true" />
+                <element signature="e#39509#39510#0" expanded="true" />
+                <element signature="e#39545#39546#0" expanded="true" />
+                <element signature="e#39581#39582#0" expanded="true" />
+                <element signature="e#39625#39626#0" expanded="true" />
+                <element signature="e#39669#39670#0" expanded="true" />
+                <element signature="e#39720#39721#0" expanded="true" />
+                <element signature="e#39762#39763#0" expanded="true" />
+                <element signature="e#39829#39830#0" expanded="true" />
+                <element signature="e#39887#39888#0" expanded="true" />
+                <element signature="e#39932#39933#0" expanded="true" />
+                <element signature="e#39969#39970#0" expanded="true" />
+                <element signature="e#40176#40177#0" expanded="true" />
+                <element signature="e#40216#40217#0" expanded="true" />
+                <element signature="e#40263#40264#0" expanded="true" />
+                <element signature="e#40304#40305#0" expanded="true" />
+                <element signature="e#40344#40345#0" expanded="true" />
+                <element signature="e#40387#40388#0" expanded="true" />
+                <element signature="e#40437#40438#0" expanded="true" />
+                <element signature="e#40481#40482#0" expanded="true" />
+                <element signature="e#40519#40520#0" expanded="true" />
+                <element signature="e#40556#40557#0" expanded="true" />
+                <element signature="e#40604#40605#0" expanded="true" />
+                <element signature="e#40642#40643#0" expanded="true" />
+                <element signature="e#40674#40675#0" expanded="true" />
+                <element signature="e#40709#40710#0" expanded="true" />
+                <element signature="e#40751#40752#0" expanded="true" />
+                <element signature="e#40787#40788#0" expanded="true" />
+                <element signature="e#40822#40823#0" expanded="true" />
+                <element signature="e#40860#40861#0" expanded="true" />
+                <element signature="e#40905#40906#0" expanded="true" />
+                <element signature="e#40944#40945#0" expanded="true" />
+                <element signature="e#40980#40981#0" expanded="true" />
+                <element signature="e#41019#41020#0" expanded="true" />
+                <element signature="e#41065#41066#0" expanded="true" />
+                <element signature="e#41105#41106#0" expanded="true" />
+                <element signature="e#41421#41422#0" expanded="true" />
+                <element signature="e#41490#41491#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/dungeon/angler0.PNG">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/dungeon/angler2.PNG">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/dungeon/angler3.PNG">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/dungeon/angler1.PNG">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/dungeon/angler4.PNG">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -13,6 +150,12 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>drawEne</find>
+      <find>currentBack</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,8 +165,51 @@
       </map>
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Zelda.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1915" />
+    <option name="y" value="25" />
+    <option name="width" value="1879" />
+    <option name="height" value="999" />
+  </component>
   <component name="ProjectId" id="1pRloqc9IBhKfc7zhZ6bTqbBIEf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
+              <item name="Sounds" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Zelda" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zelda" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -47,6 +233,18 @@
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.Zelda">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -77,7 +275,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -101,15 +299,60 @@
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3012000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1915" y="25" width="1879" height="999" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16439848" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22086571" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4017758" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32741398" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -128,7 +371,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1750" height="183" key="GridCell.Tab.0.bottom" timestamp="1615437580482">
@@ -167,6 +409,113 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state width="1579" height="330" key="GridCell.Tab.1.right/1792.25.1920.1055/0.25.1792.1034@1792.25.1920.1055" timestamp="1615331722281" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler0.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler2.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler3.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler1.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/dungeon/angler4.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zelda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="733" column="46" lean-forward="true" selection-start-line="733" selection-start-column="46" selection-end-line="733" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#19492#19493#0" expanded="true" />
+            <element signature="e#19544#19545#0" expanded="true" />
+            <element signature="e#19831#19832#0" expanded="true" />
+            <element signature="e#19885#19886#0" expanded="true" />
+            <element signature="e#22800#22801#0" expanded="true" />
+            <element signature="e#22842#22843#0" expanded="true" />
+            <element signature="e#24493#24494#0" expanded="true" />
+            <element signature="e#24533#24534#0" expanded="true" />
+            <element signature="e#32660#32661#0" expanded="true" />
+            <element signature="e#32695#32696#0" expanded="true" />
+            <element signature="e#32738#32739#0" expanded="true" />
+            <element signature="e#32776#32777#0" expanded="true" />
+            <element signature="e#33714#33715#0" expanded="true" />
+            <element signature="e#33749#33750#0" expanded="true" />
+            <element signature="e#33793#33794#0" expanded="true" />
+            <element signature="e#33831#33832#0" expanded="true" />
+            <element signature="e#36508#36509#0" expanded="true" />
+            <element signature="e#36548#36549#0" expanded="true" />
+            <element signature="e#36583#36584#0" expanded="true" />
+            <element signature="e#36617#36618#0" expanded="true" />
+            <element signature="e#36652#36653#0" expanded="true" />
+            <element signature="e#36686#36687#0" expanded="true" />
+            <element signature="e#36715#36716#0" expanded="true" />
+            <element signature="e#36752#36753#0" expanded="true" />
+            <element signature="e#36781#36782#0" expanded="true" />
+            <element signature="e#36818#36819#0" expanded="true" />
+            <element signature="e#37244#37245#0" expanded="true" />
+            <element signature="e#37282#37283#0" expanded="true" />
+            <element signature="e#38931#38932#0" expanded="true" />
+            <element signature="e#38963#38964#0" expanded="true" />
+            <element signature="e#38995#38996#0" expanded="true" />
+            <element signature="e#39027#39028#0" expanded="true" />
+            <element signature="e#39066#39067#0" expanded="true" />
+            <element signature="e#39105#39106#0" expanded="true" />
+            <element signature="e#39144#39145#0" expanded="true" />
+            <element signature="e#39183#39184#0" expanded="true" />
+            <element signature="e#39232#39233#0" expanded="true" />
+            <element signature="e#39272#39273#0" expanded="true" />
+            <element signature="e#39321#39322#0" expanded="true" />
+            <element signature="e#39361#39362#0" expanded="true" />
+            <element signature="e#39397#39398#0" expanded="true" />
+            <element signature="e#39434#39435#0" expanded="true" />
+            <element signature="e#39471#39472#0" expanded="true" />
+            <element signature="e#39509#39510#0" expanded="true" />
+            <element signature="e#39545#39546#0" expanded="true" />
+            <element signature="e#39581#39582#0" expanded="true" />
+            <element signature="e#39625#39626#0" expanded="true" />
+            <element signature="e#39669#39670#0" expanded="true" />
+            <element signature="e#39720#39721#0" expanded="true" />
+            <element signature="e#39762#39763#0" expanded="true" />
+            <element signature="e#39829#39830#0" expanded="true" />
+            <element signature="e#39887#39888#0" expanded="true" />
+            <element signature="e#39932#39933#0" expanded="true" />
+            <element signature="e#39969#39970#0" expanded="true" />
+            <element signature="e#40176#40177#0" expanded="true" />
+            <element signature="e#40216#40217#0" expanded="true" />
+            <element signature="e#40263#40264#0" expanded="true" />
+            <element signature="e#40304#40305#0" expanded="true" />
+            <element signature="e#40344#40345#0" expanded="true" />
+            <element signature="e#40387#40388#0" expanded="true" />
+            <element signature="e#40437#40438#0" expanded="true" />
+            <element signature="e#40481#40482#0" expanded="true" />
+            <element signature="e#40519#40520#0" expanded="true" />
+            <element signature="e#40556#40557#0" expanded="true" />
+            <element signature="e#40604#40605#0" expanded="true" />
+            <element signature="e#40642#40643#0" expanded="true" />
+            <element signature="e#40674#40675#0" expanded="true" />
+            <element signature="e#40709#40710#0" expanded="true" />
+            <element signature="e#40751#40752#0" expanded="true" />
+            <element signature="e#40787#40788#0" expanded="true" />
+            <element signature="e#40822#40823#0" expanded="true" />
+            <element signature="e#40860#40861#0" expanded="true" />
+            <element signature="e#40905#40906#0" expanded="true" />
+            <element signature="e#40944#40945#0" expanded="true" />
+            <element signature="e#40980#40981#0" expanded="true" />
+            <element signature="e#41019#41020#0" expanded="true" />
+            <element signature="e#41065#41066#0" expanded="true" />
+            <element signature="e#41105#41106#0" expanded="true" />
+            <element signature="e#41421#41422#0" expanded="true" />
+            <element signature="e#41490#41491#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
