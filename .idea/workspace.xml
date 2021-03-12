@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$SoundSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$enemyObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$mapObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$mapObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
-    </list>
+    <list default="true" id="c7ac3da4-3782-4a4e-b061-32eaf3f49adf" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +14,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zelda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="733" column="46" lean-forward="true" selection-start-line="733" selection-start-column="46" selection-end-line="733" selection-end-column="46" />
+            <state relative-caret-position="223">
+              <caret line="729" column="111" lean-forward="true" selection-start-line="729" selection-start-column="111" selection-end-line="729" selection-end-column="111" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#19492#19493#0" expanded="true" />
@@ -300,7 +286,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3012000" />
+    <option name="totallyTimeSpent" value="4258000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1915" y="25" width="1879" height="999" extended-state="0" />
@@ -315,7 +301,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22086571" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.072142065" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4017758" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,8 +414,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zelda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="733" column="46" lean-forward="true" selection-start-line="733" selection-start-column="46" selection-end-line="733" selection-end-column="46" />
+        <state relative-caret-position="223">
+          <caret line="729" column="111" lean-forward="true" selection-start-line="729" selection-start-column="111" selection-end-line="729" selection-end-column="111" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#19492#19493#0" expanded="true" />
